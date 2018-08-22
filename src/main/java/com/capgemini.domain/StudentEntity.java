@@ -6,9 +6,6 @@ import com.capgemini.listeners.UpdateListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
-import java.util.LinkedList;
-import java.util.List;
 
 @Entity
 @Table(name = "STUDENT")
@@ -28,7 +25,6 @@ public class StudentEntity extends AbstractEntity  implements Serializable {
     private EmployeeEntity boss;
 
 
-    // for hibernate
     public StudentEntity() {
     }
 
@@ -36,6 +32,7 @@ public class StudentEntity extends AbstractEntity  implements Serializable {
         this.id = id;
         this.grade = grade;
     }
+
 
     public Long getId() {
         return id;
