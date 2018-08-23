@@ -45,11 +45,11 @@ limitations under the License.
 
   <dependencies>
     <dependency>
-      <!-- NOTE: plexus-interpolation is SHADED INTO plexus-utils.
+      <!-- NOTE: plexus-interpolation is SHADED INTO plexus-util.
            This is done to provide a migration path from the old
-           interpolation classes in plexus-utils to the current
+           interpolation classes in plexus-util to the current
            implementation, which was broken out into plexus-interpolation.
-           The old classes still exist in plexus-utils, but are 
+           The old classes still exist in plexus-util, but are
            DEPRECATED.
       -->
       <groupId>org.codehaus.plexus</groupId>
@@ -89,7 +89,7 @@ limitations under the License.
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <!-- surefire requires plexus-utils to be jdk 1.3 compatible -->
+          <!-- surefire requires plexus-util to be jdk 1.3 compatible -->
           <source>1.3</source>
           <target>1.3</target>
         </configuration>
@@ -98,7 +98,7 @@ limitations under the License.
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
-          <!-- required to ensure the test classes are used, not surefire's plexus-utils -->
+          <!-- required to ensure the test classes are used, not surefire's plexus-util -->
           <childDelegation>true</childDelegation>
           <excludes>
             <exclude>org/codehaus/plexus/util/FileBasedTestCase.java</exclude>

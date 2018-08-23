@@ -23,14 +23,8 @@ public class EmployeeMapper {
                 .withFirstName(employeeEntity.getFirstName())
                 .withLastName(employeeEntity.getLastName())
                 .withPosition(employeeEntity.getPosition())
-                .withTrainersId(employeeEntity.getTrainers()
-                        .stream()
-                        .map(TrainerEntity::getId)
-                        .collect(Collectors.toList()))
-                .withStudents(employeeEntity.getStudents()
-                        .stream()
-                        .map(StudentEntity::getId)
-                        .collect(Collectors.toList()))
+                .withTrainerId(employeeEntity.getTrainer().getId())
+                .withStudentId(employeeEntity.getStudent().getId())
                 .build();
 
     }
@@ -46,7 +40,7 @@ public class EmployeeMapper {
         employeeEntity.setFirstName(employeeTO.getFirstName());
         employeeEntity.setLastName(employeeTO.getLastName());
         employeeEntity.setPosition(employeeTO.getPosition());
-
+    // nie daje studentsId bo nie mozna dao tutaj uzywać
         return employeeEntity;
 
     }

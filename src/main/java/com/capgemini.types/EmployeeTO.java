@@ -9,19 +9,19 @@ public class EmployeeTO {
     private String firstName;
     private String lastName;
     private String position;
-    private List<Long> trainersId;
-    private List<Long> studentsId;
+    private Long trainerId;
+    private Long studentId;
 
 
 
     public EmployeeTO(int version,Long id, String firstName, String lastName,
-                      String position,List<Long> trainersId, List<Long> studentsId) {
+                      String position, Long trainerId, Long studentId) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.position = position;
-        this.trainersId =trainersId;
-        this.studentsId =studentsId;
+        this.trainerId =trainerId;
+        this.studentId =studentId;
         this.version = version;
     }
 
@@ -65,20 +65,20 @@ public class EmployeeTO {
         this.position = position;
     }
 
-    public List<Long> getTrainersId() {
-        return trainersId;
+    public Long getTrainerId() {
+        return trainerId;
     }
 
-    public void setTrainersId(List<Long> trainersId) {
-        this.trainersId = trainersId;
+    public void setTrainerId(Long trainerId) {
+        this.trainerId = trainerId;
     }
 
-    public List<Long> getStudentsId() {
-        return studentsId;
+    public Long getStudentId() {
+        return studentId;
     }
 
-    public void setStudentsId(List<Long> studentsId) {
-        this.studentsId = studentsId;
+    public void setStudentId(Long studentId) {
+        this.studentId = studentId;
     }
 
     public static class EmployeeTOBuilder {
@@ -88,8 +88,8 @@ public class EmployeeTO {
         private String firstName;
         private String lastName;
         private String position;
-        private List<Long> trainersId;
-        private List<Long> studentsId;
+        private Long trainerId;
+        private Long studentId;
 
         public EmployeeTOBuilder() {
             super();
@@ -114,12 +114,12 @@ public class EmployeeTO {
             this.position = position;
             return this;
         }
-        public EmployeeTOBuilder withTrainersId(List<Long> trainersId) {
-            this.trainersId = trainersId;
+        public EmployeeTOBuilder withTrainerId(Long trainerId) {
+            this.trainerId = trainerId;
             return this;
         }
-        public EmployeeTOBuilder withStudents(List<Long> studentsId) {
-            this.studentsId = studentsId;
+        public EmployeeTOBuilder withStudentId(Long studentId) {
+            this.studentId = studentId;
             return this;
         }
 
@@ -131,7 +131,7 @@ public class EmployeeTO {
 
         public EmployeeTO build() {
             checkBeforeBuild(firstName, lastName,position);
-            return new EmployeeTO(version,id, firstName, lastName,  position, trainersId, studentsId);
+            return new EmployeeTO(version,id, firstName, lastName,  position, trainerId, studentId);
         }
 
         private void checkBeforeBuild(String firstName, String lastName, String position) {

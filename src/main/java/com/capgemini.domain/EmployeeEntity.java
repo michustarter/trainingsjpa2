@@ -5,8 +5,6 @@ import com.capgemini.listeners.UpdateListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "EMPLOYEE")
@@ -33,21 +31,18 @@ public class EmployeeEntity extends AbstractEntity implements Serializable {
     private String position;
 
 
-    @ManyToMany
-    @JoinTable(name = "employee_trainer", joinColumns = {@JoinColumn(name = "employee_id")},
-            inverseJoinColumns = {@JoinColumn(name = "trainer_id")})
-    private List<TrainerEntity> trainers;
+    @OneToOne
+    @JoinColumn(name = "student_id") //nullable = true
+    private StudentEntity student;
 
-    @ManyToMany
-    @JoinTable(name = "employee_student", joinColumns = {@JoinColumn(name = "employee_id")},
-            inverseJoinColumns = {@JoinColumn(name = "student_id")})
-    private List<StudentEntity> students;
+    @OneToOne
+    @JoinColumn(name = "trainer_id") //nullable = true
+    private TrainerEntity trainer;
 
 
     // for hibernate
     public EmployeeEntity() {
-        this.trainers = new ArrayList<>();
-        this.students = new ArrayList<>();
+
     }
 
     public int getVersion() {
@@ -90,19 +85,19 @@ public class EmployeeEntity extends AbstractEntity implements Serializable {
         this.position = position;
     }
 
-    public List<TrainerEntity> getTrainers() {
-        return trainers;
+    public StudentEntity getStudent() {
+        return student;
     }
 
-    public void setTrainers(List<TrainerEntity> trainers) {
-        this.trainers = trainers;
+    public void setStudent(StudentEntity student) {
+        this.student = student;
     }
 
-    public List<StudentEntity> getStudents() {
-        return students;
+    public TrainerEntity getTrainer() {
+        return trainer;
     }
 
-    public void setStudents(List<StudentEntity> students) {
-        this.students = students;
+    public void setTrainer(TrainerEntity trainer) {
+        this.trainer = trainer;
     }
 }
