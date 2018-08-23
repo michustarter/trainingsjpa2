@@ -5,17 +5,22 @@ import com.capgemini.listeners.UpdateListener;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "TRAINING")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @EntityListeners({UpdateListener.class, InsertListener.class})
-public class TrainingEntity extends AbstractEntity {
+public class TrainingEntity extends AbstractEntity{
+
+    @Version
+    @Column(name="version", columnDefinition = "integer DEFAULT 0", nullable = false)
+    private int version;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @Column(nullable = false)
     private String title;
@@ -33,9 +38,9 @@ public class TrainingEntity extends AbstractEntity {
     private Date dateTo;
 
     @Column(nullable = false)
-    private int numeberOfHours;
+    private int numberOfHours;
 
-   @ElementCollection
+    @ElementCollection
     private List<String> keyWords;
 
     @Column(nullable = false)
@@ -46,22 +51,110 @@ public class TrainingEntity extends AbstractEntity {
             inverseJoinColumns = {@JoinColumn(name = "student_id")})
     private List<StudentEntity> students;
 
+    @ManyToMany
+    @JoinTable(name = "trainer_training", joinColumns = {@JoinColumn(name = "training_id")},
+            inverseJoinColumns = {@JoinColumn(name = "trainer_id")})
+    private List<TrainerEntity> trainers;
+
 
     public TrainingEntity() {
+        this.students = new ArrayList<>();
+        this.trainers = new ArrayList<>();
     }
 
-    public TrainingEntity(long id, String title, String type, String kind, Date dateFrom, Date dateTo, int numeberOfHours, List<String> keyWords, double amount,List<StudentEntity> students) {
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
         this.type = type;
+    }
+
+    public String getKind() {
+        return kind;
+    }
+
+    public void setKind(String kind) {
         this.kind = kind;
+    }
+
+    public String getDateFrom() {
+        return dateFrom.toString();
+    }
+
+    public void setDateFrom(Date dateFrom) {
         this.dateFrom = dateFrom;
+    }
+
+    public String  getDateTo() {
+        return dateTo.toString();
+    }
+
+    public void setDateTo(Date dateTo) {
         this.dateTo = dateTo;
-        this.numeberOfHours = numeberOfHours;
-        this.keyWords=keyWords;
+    }
+
+    public int getNumberOfHours() {
+        return numberOfHours;
+    }
+
+    public void setNumberOfHours(int numberOfHours) {
+        this.numberOfHours = numberOfHours;
+    }
+
+    public List<String> getKeyWords() {
+        return keyWords;
+    }
+
+    public void setKeyWords(List<String> keyWords) {
+        this.keyWords = keyWords;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
         this.amount = amount;
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
+    }
+
+    public List<StudentEntity> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<StudentEntity> students) {
         this.students = students;
     }
 
+    public List<TrainerEntity> getTrainers() {
+        return trainers;
+    }
+
+    public void setTrainers(List<TrainerEntity> trainers) {
+        this.trainers = trainers;
+    }
 }

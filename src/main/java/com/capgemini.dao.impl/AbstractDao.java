@@ -1,7 +1,5 @@
 package com.capgemini.dao.impl;
 
-import com.capgemini.dao.Dao;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;

@@ -5,6 +5,7 @@ import com.capgemini.listeners.UpdateListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,6 +14,10 @@ import java.util.List;
 @EntityListeners({UpdateListener.class, InsertListener.class})
 public class EmployeeEntity extends AbstractEntity implements Serializable {
 
+
+    @Version
+    @Column(name="version", columnDefinition = "integer DEFAULT 0", nullable = false)
+    private int version;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -39,17 +44,18 @@ public class EmployeeEntity extends AbstractEntity implements Serializable {
     private List<StudentEntity> students;
 
 
+    // for hibernate
     public EmployeeEntity() {
-
+        this.trainers = new ArrayList<>();
+        this.students = new ArrayList<>();
     }
 
-    public EmployeeEntity(Long id, String firstName, String lastName, String position,List<TrainerEntity> trainers,List<StudentEntity> students) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.position = position;
-        this.trainers=trainers;
-        this.students=students;
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
     }
 
     public Long getId() {

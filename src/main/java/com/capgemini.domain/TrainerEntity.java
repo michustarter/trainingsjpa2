@@ -5,13 +5,16 @@ import com.capgemini.listeners.UpdateListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
-@Table(name = "EXTERNAL_TRAINER")
+@Table(name = "TRAINER")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @EntityListeners({UpdateListener.class, InsertListener.class})
 public class TrainerEntity extends AbstractEntity implements Serializable {
+
+    @Version
+    @Column(name="version", columnDefinition = "integer DEFAULT 0", nullable = false)
+    private int version;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,25 +29,58 @@ public class TrainerEntity extends AbstractEntity implements Serializable {
     @Column(nullable = false)
     private String position;
 
-    @Column(nullable = true)
+    @Column
     private String companyName;
 
-
-    @ManyToMany
-    @JoinTable(name = "trainer_training", joinColumns = {@JoinColumn(name = "trainer_id")},
-            inverseJoinColumns = {@JoinColumn(name = "trainings")})
-    private List<TrainingEntity> trainings;
-
-    public TrainerEntity(){
+    public TrainerEntity() {
 
     }
-    public TrainerEntity(Long id, String firstName, String lastName, String position, String companyName, List<TrainingEntity> trainings) {
-        super();
-        this.id=id;
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
         this.position = position;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
         this.companyName = companyName;
-        this.trainings=trainings;
     }
 }

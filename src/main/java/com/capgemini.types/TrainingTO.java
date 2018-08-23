@@ -3,116 +3,260 @@ package com.capgemini.types;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class TrainingTO {
 
+    private int version;
     private Long id;
     private String title;
     private String type;
     private String kind;
     private Date dateFrom;
     private Date dateTo;
-    private int numeberOfHours;
+    private int numberOfHours;
     private List<String> keyWords;
     private double amount;
-    private List<Long> students;
+    private List<Long> studentsId;
+    private List<Long> trainersId;
 
-    public TrainingTO(Long id, String title, String type, String kind, Date dateFrom, Date dateTo,
-                      int numeberOfHours, List<String> keyWords, double amount, List<Long> students) {
+    public TrainingTO(int version, Long id, String title, String type, String kind, Date dateFrom, Date dateTo,
+                      int numberOfHours, List<String> keyWords, double amount,
+                      List<Long> studentsId, List<Long> trainersId) {
         this.id = id;
         this.title = title;
         this.type = type;
         this.kind = kind;
         this.dateFrom = dateFrom;
         this.dateTo = dateTo;
-        this.numeberOfHours = numeberOfHours;
+        this.numberOfHours = numberOfHours;
         this.keyWords = keyWords;
         this.amount = amount;
-        this.students = students;
+        this.studentsId = studentsId;
+        this.trainersId = trainersId;
+        this.version = version;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getKind() {
+        return kind;
+    }
+
+    public void setKind(String kind) {
+        this.kind = kind;
+    }
+
+    public Date getDateFrom() {
+        return dateFrom;
+    }
+
+    public void setDateFrom(Date dateFrom) {
+        this.dateFrom = dateFrom;
+    }
+
+    public Date getDateTo() {
+        return dateTo;
+    }
+
+    public void setDateTo(Date dateTo) {
+        this.dateTo = dateTo;
+    }
+
+    public int getNumberOfHours() {
+        return numberOfHours;
+    }
+
+    public void setNumberOfHours(int numberOfHours) {
+        this.numberOfHours = numberOfHours;
+    }
+
+    public List<String> getKeyWords() {
+        return keyWords;
+    }
+
+    public void setKeyWords(List<String> keyWords) {
+        this.keyWords = keyWords;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public List<Long> getStudents() {
+        return studentsId;
+    }
+
+    public void setStudents(List<Long> studentsId) {
+        this.studentsId = studentsId;
+    }
+
+    public List<Long> getTrainersId() {
+        return trainersId;
+    }
+
+    public void setTrainersId(List<Long> trainersId) {
+        this.trainersId = trainersId;
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
     }
 
     public static class TrainingTOBuilder {
 
+        private int version;
         private Long id;
         private String title;
         private String type;
         private String kind;
         private Date dateFrom;
         private Date dateTo;
-        private int numeberOfHours;
+        private int numberOfHours;
         private List<String> keyWords;
         private double amount;
-        private List<Long> students;
+        private List<Long> studentsId = new ArrayList<>();
+        private List<Long> trainersId = new ArrayList<>();
+
 
         public TrainingTOBuilder() {
             super();
         }
 
 
-        public TrainingTOBuilder withId(long id) {
+
+        public TrainingTOBuilder withId(Long id) {
             this.id = id;
             return this;
 
         }
-
-        public TrainingTOBuilder withTitle(String title) {
+        public TrainingTOBuilder withTitle(String title){
             this.title = title;
             return this;
         }
 
-        public TrainingTOBuilder withType(String type) {
+        public TrainingTOBuilder withType(String type){
             this.type = type;
             return this;
         }
 
-        public TrainingTOBuilder withKind(String kind) {
+        public TrainingTOBuilder withKind(String kind){
             this.kind = kind;
             return this;
         }
 
-        public TrainingTOBuilder withDateFrom(String date) {
+        public TrainingTOBuilder withDateFrom(String date){
             this.dateFrom = Date.valueOf(date);
             return this;
 
         }
 
-        public TrainingTOBuilder withDateTo(String date) {
+        public TrainingTOBuilder withDateTo(String date){
             this.dateTo = Date.valueOf(date);
             return this;
         }
 
-        public TrainingTOBuilder withNumeberOfHours(int numeberOfHours) {
-            this.numeberOfHours = numeberOfHours;
+        public TrainingTOBuilder withNumberOfHours(int numberOfHours){
+            this.numberOfHours = numberOfHours;
             return this;
         }
 
-        public TrainingTOBuilder withKeyWords(List<String> keys) {
+        public TrainingTOBuilder withKeyWords(List<String> keys){
             this.keyWords = keys;
             return this;
         }
 
-        public TrainingTOBuilder withAmount(double amount) {
+        public TrainingTOBuilder withAmount(double amount){
             this.amount = amount;
             return this;
         }
 
-        public TrainingTOBuilder withStudents(List<Long> students) {
-            this.students = students;
+        public TrainingTOBuilder withStudentsId(List<Long> studentsId) {
+            this.studentsId = studentsId;
             return this;
         }
 
+        public TrainingTOBuilder withTrainersId(List<Long> trainersId) {
+            this.trainersId = trainersId;
+            return this;
+        }
+
+        public TrainingTOBuilder withVersion(int version) {
+            this.version = version;
+            return this;
+
+        }
+
+
+
         public TrainingTO build() {
-            checkBeforeBuild(title, type, kind, dateFrom, dateTo, numeberOfHours, keyWords, amount);
-            return new TrainingTO(id, title, type, kind, dateFrom, dateTo, numeberOfHours, keyWords, amount, students);
+            checkBeforeBuild(title, type, kind, dateFrom, dateTo, numberOfHours, keyWords, amount);
+            return new TrainingTO(version,id, title, type, kind, dateFrom, dateTo, numberOfHours,
+                    keyWords, amount, studentsId, trainersId);
         }
 
         private void checkBeforeBuild(String title, String type, String kind, Date dateFrom, Date dateTo,
-                                      Integer numeberOfHours, List<String> keyWords, Double amount) {
+                                      Integer numberOfHours, List<String> keyWords, Double amount)
+        {
             if (title == null || type == null || kind == null || dateFrom == null || dateTo == null ||
-                    numeberOfHours == null || keyWords == null || amount == null) {
+                    numberOfHours == null || keyWords == null || amount == null ) {
                 throw new RuntimeException("Incorrect training to be created");
             }
 
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TrainingTO that = (TrainingTO) o;
+        return version == that.version &&
+                numberOfHours == that.numberOfHours &&
+                Double.compare(that.amount, amount) == 0 &&
+                Objects.equals(id, that.id) &&
+                Objects.equals(title, that.title) &&
+                Objects.equals(type, that.type) &&
+                Objects.equals(kind, that.kind) &&
+                Objects.equals(dateFrom, that.dateFrom) &&
+                Objects.equals(dateTo, that.dateTo) &&
+                Objects.equals(keyWords, that.keyWords) &&
+                Objects.equals(studentsId, that.studentsId) &&
+                Objects.equals(trainersId, that.trainersId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(version, id, title, type, kind, dateFrom, dateTo, numberOfHours, keyWords, amount, studentsId, trainersId);
     }
 }

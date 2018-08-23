@@ -1,11 +1,12 @@
 package com.capgemini.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
 
 @MappedSuperclass
-public class AbstractEntity {
+public class AbstractEntity implements Serializable {
 
     @Column(nullable = true)
     @Temporal(TemporalType.TIMESTAMP)
@@ -15,9 +16,9 @@ public class AbstractEntity {
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedTime;
 
-
-    @Version
-    public long version;
+  /*  @Version
+    public Long version;
+    */
 
     public void setCreatedTime(final Timestamp createdTime) {
         this.createdTime = createdTime;
@@ -26,4 +27,12 @@ public class AbstractEntity {
     public void setUpdatedTime(Timestamp updatedTime) {
         this.updatedTime = updatedTime;
     }
+
+//    public Long getVersion() {
+//        return this.version;
+//    }
+//
+//    public void setVersion(final Long version) {
+//        this.version = version;
+//    }
 }

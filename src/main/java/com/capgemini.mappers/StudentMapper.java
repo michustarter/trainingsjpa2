@@ -14,13 +14,15 @@ public class StudentMapper {
             return null;
         }
 
-
         return new StudentTO.StudentTOBuilder()
+                .withVersion(studentEntity.getVersion())
                 .withId(studentEntity.getId())
-                .withBoss(studentEntity.getBoss().getId())
+                .withBossId(studentEntity.getBoss().getId())
                 .withGrade(studentEntity.getGrade())
+                .withFirstName(studentEntity.getFirstName())
+                .withLastName(studentEntity.getLastName())
+                .withPosition(studentEntity.getPosition())
                 .build();
-
 
     }
 
@@ -29,13 +31,29 @@ public class StudentMapper {
             return null;
         }
 
-        return new StudentEntity(studentTO.getId(), studentTO.getGrade());
+        StudentEntity studentEntity=  new StudentEntity();
 
+        studentEntity.setVersion(studentTO.getVersion());
+        studentEntity.setId(studentEntity.getId());
+        //studentEntity.setBoss(studentTO.getBossId().);  pamietac w testach !! bossa recznie ustawic !! i poodbnie inne przypadki z tymi id !! findById !
+        studentEntity.setGrade(studentEntity.getGrade());
+        studentEntity.setFirstName(studentEntity.getFirstName());
+        studentEntity.setLastName(studentEntity.getLastName());
+        studentEntity.setPosition(studentTO.getPosition());
+
+        return  studentEntity;
     }
 
-    public static List<Long> map2TOs(List<StudentEntity> employeeEntities) {
-        if (employeeEntities != null) {
-            return employeeEntities.stream().map(StudentEntity::getId).collect(Collectors.toList());
+    public static List<StudentTO> map2TOs(List<StudentEntity> studenteEntities) {
+        if (studenteEntities != null) {
+            return studenteEntities.stream().map(StudentMapper::toTO).collect(Collectors.toList());
+        }
+        return new ArrayList<>();
+    }
+
+    public static List<StudentEntity> map2Entities(List<StudentTO> studentTOS) {
+        if (studentTOS != null) {
+            return studentTOS.stream().map(StudentMapper::toEntity).collect(Collectors.toList());
         }
         return new ArrayList<>();
     }
