@@ -32,7 +32,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             throw new NullPersonException("Cannot add employee to database with empty data!");
         }
         //isPresent dodane zamiast != null
-        if(employeeTO.getId()!=null && employeeDao.findById(employeeTO.getId()).isPresent()) {
+        if(employeeTO.getId()!=null || employeeDao.findById(employeeTO.getId()).isPresent()) {
             throw new EmployeeAlreadyExistsException("Employee already exists in database!");
         }
         EmployeeEntity employeeEntity = EmployeeMapper.toEntity(employeeTO);
@@ -45,7 +45,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void deleteEmployee(EmployeeTO employeeTO) {
         // zakładam, że eTO ma ID, jelsi nie ma ID -> to nie istnieje w bazie danych
-        if(employeeTO.getId()!=null && !employeeDao.findById(employeeTO.getId()).isPresent()) {
+        if(employeeTO.getId()==null || !employeeDao.findById(employeeTO.getId()).isPresent()) {
             throw new NullPersonException("Cannot delete non-existent employee!");
 
         }

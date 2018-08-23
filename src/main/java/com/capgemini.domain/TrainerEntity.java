@@ -29,7 +29,7 @@ public class TrainerEntity extends AbstractEntity implements Serializable {
     @Column(nullable = false)
     private String position;
 
-    @Column
+    @Column(nullable = false)
     private String companyName;
 
     public TrainerEntity() {

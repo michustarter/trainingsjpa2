@@ -5,7 +5,8 @@ import com.capgemini.types.*;
 
 public interface TrainerService {
 
-    TrainerTO addTrainer(EmployeeTO employeeTO, TrainerTO trainerTO);
+    TrainerTO addTrainer(EmployeeTO employeeTO);
+    TrainerTO addExternalTrainer(TrainerTO trainerTO);
 
     void deleteTrainer(TrainerTO trainerTO);
 
