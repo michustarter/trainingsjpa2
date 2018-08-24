@@ -5,10 +5,11 @@ import com.capgemini.types.StudentTO;
 import com.capgemini.util.BadGradeRangeException;
 import com.capgemini.util.NullBossException;
 import com.capgemini.util.NullPersonException;
+import com.capgemini.util.StudentAlreadyExistsException;
 
 public interface StudentService {
 
-    StudentTO addStudent(EmployeeTO employeeTO, EmployeeTO boss, int grade) throws NullPersonException, NullBossException, BadGradeRangeException;
+    StudentTO addStudent(EmployeeTO employeeTO, EmployeeTO boss, int grade) throws NullPersonException, NullBossException, BadGradeRangeException, StudentAlreadyExistsException;
 
     void deleteStudent(StudentTO studentTO) throws NullPersonException;
 

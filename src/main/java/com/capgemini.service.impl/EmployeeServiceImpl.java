@@ -33,7 +33,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
         //isPresent dodane zamiast != null
         if(employeeTO.getId()!=null || employeeDao.findById(employeeTO.getId()).isPresent()) {
-            throw new EmployeeAlreadyExistsException("Employee already exists in database!");
+            throw new EmployeeAlreadyExistsException("This employee already exists in database!");
         }
         EmployeeEntity employeeEntity = EmployeeMapper.toEntity(employeeTO);
         employeeEntity=employeeDao.save(employeeEntity);

@@ -12,6 +12,7 @@ import com.capgemini.types.StudentTO;
 import com.capgemini.util.BadGradeRangeException;
 import com.capgemini.util.NullBossException;
 import com.capgemini.util.NullPersonException;
+import com.capgemini.util.StudentAlreadyExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,9 +32,12 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public StudentTO addStudent(EmployeeTO employeeTO, EmployeeTO bossTO, int grade) throws NullPersonException, NullBossException, BadGradeRangeException {
+    public StudentTO addStudent(EmployeeTO employeeTO, EmployeeTO bossTO, int grade) throws NullPersonException, NullBossException, BadGradeRangeException, StudentAlreadyExistsException {
         if (employeeTO == null || employeeTO.getId() == null || !employeeDao.findById(employeeTO.getId()).isPresent()) {
             throw new NullPersonException("Cannot create student if employee does not exist in database!");
+        }
+        if (employeeTO.getStudentId() != null) {
+            throw new StudentAlreadyExistsException("This student already exists in database!");
         }
         if (bossTO == null || bossTO.getId() == null || !employeeDao.findById(bossTO.getId()).isPresent()) {
             throw new NullBossException("Cannot create student if boss does not exist in database!");
@@ -85,7 +89,7 @@ public class StudentServiceImpl implements StudentService {
 
 
         List<EmployeeEntity> employees = employeeDao.findAll();
-        StudentTO finalStudentTO = studentTO;
+       StudentTO finalStudentTO = studentTO;
         EmployeeEntity employeeEntity = employees.stream()
                 .filter(e -> e.getStudent().getId() == finalStudentTO.getId())
                 .collect(Collectors.toList())

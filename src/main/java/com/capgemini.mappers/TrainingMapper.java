@@ -58,6 +58,7 @@ public class TrainingMapper {
         trainingEntity.setKeyWords(trainingTO.getKeyWords());
         trainingEntity.setAmount(trainingTO.getAmount());
         //nie daje  setStudents bo nie moge tu przekonwertowac z IDków na obiekty Entity
+        //ani setTrainers^^
 
         return trainingEntity;
 

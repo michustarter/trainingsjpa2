@@ -109,11 +109,11 @@ public class TrainingTO {
         this.amount = amount;
     }
 
-    public List<Long> getStudents() {
+    public List<Long> getStudentsId() {
         return studentsId;
     }
 
-    public void setStudents(List<Long> studentsId) {
+    public void setStudentsId(List<Long> studentsId) {
         this.studentsId = studentsId;
     }
 

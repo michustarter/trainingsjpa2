@@ -8,8 +8,10 @@ import com.capgemini.mappers.TrainerMapper;
 import com.capgemini.service.TrainerService;
 import com.capgemini.types.EmployeeTO;
 import com.capgemini.types.TrainerTO;
+import com.capgemini.util.EmployeeAlreadyExistsException;
 import com.capgemini.util.IncorrectTrainerException;
 import com.capgemini.util.NullPersonException;
+import com.capgemini.util.TrainerAlreadyExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,13 +31,15 @@ public class TrainerServiceImpl implements TrainerService {
     }
 
     @Override
-    public TrainerTO addTrainer(EmployeeTO employeeTO) throws NullPersonException {
+    public TrainerTO addTrainer(EmployeeTO employeeTO) throws NullPersonException, TrainerAlreadyExistsException {
         //zakładam, że employee istnieje (jeśli nie istnieje, to rzucam wyjątek z info ze musze najpierw dodac employeee
 
         if (employeeTO == null || employeeTO.getId()==null  || !employeeDao.findById(employeeTO.getId()).isPresent()) {
             throw new NullPersonException("Cannot create trainer if employee does not exist in database!");
         }
-
+       if (employeeTO.getTrainerId()!= null) {
+           throw new TrainerAlreadyExistsException("This trainer already exists in database!");
+       }
         TrainerEntity trainerEntity = new TrainerEntity();
         trainerEntity.setFirstName(employeeTO.getFirstName());
         trainerEntity.setLastName(employeeTO.getLastName());
