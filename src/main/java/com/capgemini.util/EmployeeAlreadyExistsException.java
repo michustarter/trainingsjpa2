@@ -1,6 +1,6 @@
 package com.capgemini.util;
 
-public class EmployeeAlreadyExistsException extends RuntimeException{
+public class EmployeeAlreadyExistsException extends Exception{
 
 
     public EmployeeAlreadyExistsException(String message) {

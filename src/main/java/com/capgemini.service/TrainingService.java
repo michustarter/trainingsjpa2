@@ -8,13 +8,13 @@ import java.util.List;
 
 public interface TrainingService {
 
-    TrainingTO addTraining(TrainingTO training);
+    TrainingTO addTraining(TrainingTO trainingTO);
 
-    TrainingTO addTrainerToTraining(TrainingTO training,TrainerTO trainer);
+    TrainingTO assignTrainerToTraining(TrainingTO trainingTO,TrainerTO trainerTO);
 
-    TrainingTO addStudentToTraining(TrainingTO training, StudentTO student);
+    TrainingTO assignStudentToTraining(TrainingTO training, StudentTO studentTO);
 
-    TrainingTO updateTraining(TrainingTO training);
+    TrainingTO updateTraining(TrainingTO trainingTO);
 
     void deleteTraining(TrainingTO trainingTO);
 
@@ -22,9 +22,9 @@ public interface TrainingService {
 
     List<TrainingTO> findTrainings();
 
-    List<TrainerTO> findTrainers(TrainingTO training);
+    List<TrainerTO> findTrainers(TrainingTO trainingTO);
 
-    List<TrainerTO> findStudents(TrainingTO training);
+    List<StudentTO> findStudents(TrainingTO trainingTO);
 
 
 }

@@ -26,7 +26,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     @Transactional
-    public EmployeeTO addEmployee(EmployeeTO employeeTO) {
+    public EmployeeTO addEmployee(EmployeeTO employeeTO) throws NullPersonException, EmployeeAlreadyExistsException {
 
         if(employeeTO == null) {
             throw new NullPersonException("Cannot add employee to database with empty data!");
@@ -43,15 +43,25 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void deleteEmployee(EmployeeTO employeeTO) {
+    public void deleteEmployee(EmployeeTO employeeTO) throws NullPersonException {
         // zakładam, że eTO ma ID, jelsi nie ma ID -> to nie istnieje w bazie danych
-        if(employeeTO.getId()==null || !employeeDao.findById(employeeTO.getId()).isPresent()) {
+        if (employeeTO.getId() == null || !employeeDao.findById(employeeTO.getId()).isPresent()) {
             throw new NullPersonException("Cannot delete non-existent employee!");
-
         }
-        // eTO zakł że ma ID wiec tutaj już tego nie sprawdzam w ifie że != nulla
-            EmployeeEntity employeeEntity = EmployeeMapper.toEntity(employeeTO);
-            employeeDao.deleteById(employeeEntity.getId());
+        // eTO zakł że ma ID wiec tutaj już tego nie sprawdzam w ifie że != null
+        EmployeeEntity employeeEntity = EmployeeMapper.toEntity(employeeTO);
+        employeeDao.deleteById(employeeEntity.getId());
+    }
 
+    @Override
+    public EmployeeTO updateEmployee(EmployeeTO employeeTO) throws NullPersonException {
+        if (employeeTO == null ) { //nie spr czy emplTO istnieje w bazie danych, jesli nie istineje to go po prostu dodam
+            throw new NullPersonException("Cannot update employee with empty data!");
+        }
+        EmployeeEntity employeeEntity = EmployeeMapper.toEntity(employeeTO);
+        employeeEntity = employeeDao.save(employeeEntity);
+        employeeTO = EmployeeMapper.toTO(employeeEntity);
+
+        return employeeTO;
     }
 }

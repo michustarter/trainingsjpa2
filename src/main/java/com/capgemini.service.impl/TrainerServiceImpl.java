@@ -29,12 +29,11 @@ public class TrainerServiceImpl implements TrainerService {
     }
 
     @Override
-    public TrainerTO addTrainer(EmployeeTO employeeTO) {
+    public TrainerTO addTrainer(EmployeeTO employeeTO) throws NullPersonException {
         //zakładam, że employee istnieje (jeśli nie istnieje, to rzucam wyjątek z info ze musze najpierw dodac employeee
 
-        if (employeeTO == null || !employeeDao.findById(employeeTO.getId()).isPresent()) {
-            throw new NullPersonException("Cannot add new trainer to non-extistent employee! " +
-                    "First you need to add an employee to the database");
+        if (employeeTO == null || employeeTO.getId()==null  || !employeeDao.findById(employeeTO.getId()).isPresent()) {
+            throw new NullPersonException("Cannot create trainer if employee does not exist in database!");
         }
 
         TrainerEntity trainerEntity = new TrainerEntity();
@@ -51,7 +50,7 @@ public class TrainerServiceImpl implements TrainerService {
     }
 
     @Override
-    public TrainerTO addExternalTrainer(TrainerTO trainerTO) {
+    public TrainerTO addExternalTrainer(TrainerTO trainerTO) throws NullPersonException, IncorrectTrainerException {
 
         if (trainerTO == null) {
             throw new NullPersonException("Cannot add external trainer to database with empty data!");
@@ -69,7 +68,7 @@ public class TrainerServiceImpl implements TrainerService {
     }
 
     @Override
-    public void deleteTrainer(TrainerTO trainerTO) { /*jesli companyName==0 to juz na bank on nalezy do jakiegos Employee
+    public void deleteTrainer(TrainerTO trainerTO) throws NullPersonException { /*jesli companyName==0 to juz na bank on nalezy do jakiegos Employee
         bo musialem dodac wczesniej go metodą addTrainer, nie patrzec na mozl stworzenia samym konstruktorem bo to nie jest ok w tym przypadku */
 
         if (trainerTO == null || trainerTO.getId()==null || !trainerDao.findById(trainerTO.getId()).isPresent()) {
@@ -84,7 +83,31 @@ public class TrainerServiceImpl implements TrainerService {
                     .collect(Collectors.toList())
                     .get(0);
             employeeEntity.setTrainer(null);
+            employeeDao.save(employeeEntity);
         }
         trainerDao.delete(TrainerMapper.toEntity(trainerTO));
     }
+
+    @Override
+    public TrainerTO updateTrainer(TrainerTO trainerTO) throws NullPersonException {
+        if (trainerTO == null) { //nie spr czy studentTO istnieje w bazie danych, jesli nie istineje to go po prostu dodam
+            throw new NullPersonException("Cannot update student with empty data!");
+        }
+        TrainerEntity trainerEntity = TrainerMapper.toEntity(trainerTO);
+        trainerEntity = trainerDao.save(trainerEntity);
+        trainerTO = TrainerMapper.toTO(trainerEntity);
+
+
+        List<EmployeeEntity> employees = employeeDao.findAll();
+        TrainerTO finalTrainerTO = trainerTO;
+        EmployeeEntity employeeEntity = employees.stream()
+                .filter(e -> e.getTrainer().getId() == finalTrainerTO.getId())
+                .collect(Collectors.toList())
+                .get(0);
+        employeeEntity.setTrainer(trainerEntity);
+        employeeDao.save(employeeEntity);
+
+        return trainerTO;
+    }
 }
+
