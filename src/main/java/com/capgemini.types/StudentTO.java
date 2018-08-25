@@ -3,9 +3,9 @@ package com.capgemini.types;
 public class StudentTO {
 
     private int version;
+    private int grade;
     private Long id;
     private Long bossId;
-    private int grade;
     private String firstName;
     private String lastName;
     private String position;
@@ -13,7 +13,7 @@ public class StudentTO {
     public StudentTO() {
     }
 
-    public StudentTO(int version,Long id,String firstName, String lastName,
+    public StudentTO(int version, Long id, String firstName, String lastName,
                      String position, Long bossId, int grade) {
         this.id = id;
         this.firstName = firstName;
@@ -55,9 +55,9 @@ public class StudentTO {
     public static class StudentTOBuilder {
 
         private int version;
+        private int grade;
         private Long id;
         private Long bossId;
-        private int grade;
         private String firstName;
         private String lastName;
         private String position;
@@ -101,20 +101,18 @@ public class StudentTO {
             return this;
         }
 
-
-
         public StudentTO build() {
-            checkBeforeBuild(grade, bossId);
-            return new StudentTO(version,id, firstName, lastName,  position, bossId, grade);
+            checkBeforeBuild(firstName, lastName, position, grade, bossId);
+            return new StudentTO(version, id, firstName, lastName, position, bossId, grade);
         }
 
-        private void checkBeforeBuild(int grade, Long bossId) {
-            if (grade == 0 || bossId == null) {
+        private void checkBeforeBuild(String firstName, String lastName, String position, int grade, Long bossId) {
+            if (firstName == null || firstName.isEmpty() || lastName == null || lastName.isEmpty()
+                    || position == null || position.isEmpty() ||
+                    grade < 1 || grade > 5 || bossId == null) {
                 throw new RuntimeException("Incorrect student to be created");
             }
-
         }
-
 
     }
 }

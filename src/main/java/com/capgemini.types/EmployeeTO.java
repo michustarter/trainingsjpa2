@@ -1,7 +1,5 @@
 package com.capgemini.types;
 
-import java.util.List;
-
 public class EmployeeTO {
 
     private int version;
@@ -13,15 +11,14 @@ public class EmployeeTO {
     private Long studentId;
 
 
-
-    public EmployeeTO(int version,Long id, String firstName, String lastName,
+    public EmployeeTO(int version, Long id, String firstName, String lastName,
                       String position, Long trainerId, Long studentId) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.position = position;
-        this.trainerId =trainerId;
-        this.studentId =studentId;
+        this.trainerId = trainerId;
+        this.studentId = studentId;
         this.version = version;
     }
 
@@ -114,10 +111,12 @@ public class EmployeeTO {
             this.position = position;
             return this;
         }
+
         public EmployeeTOBuilder withTrainerId(Long trainerId) {
             this.trainerId = trainerId;
             return this;
         }
+
         public EmployeeTOBuilder withStudentId(Long studentId) {
             this.studentId = studentId;
             return this;
@@ -130,12 +129,12 @@ public class EmployeeTO {
 
 
         public EmployeeTO build() {
-            checkBeforeBuild(firstName, lastName,position);
-            return new EmployeeTO(version,id, firstName, lastName,  position, trainerId, studentId);
+            checkBeforeBuild(firstName, lastName, position);
+            return new EmployeeTO(version, id, firstName, lastName, position, trainerId, studentId);
         }
 
         private void checkBeforeBuild(String firstName, String lastName, String position) {
-            if (firstName == null || lastName == null || position == null) {
+            if (firstName == null || firstName.isEmpty() || lastName == null || lastName.isEmpty() || position == null || position.isEmpty()) {
                 throw new RuntimeException("Incorrect employee to be created");
             }
 

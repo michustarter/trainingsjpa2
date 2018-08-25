@@ -32,15 +32,14 @@ public class EmployeeEntity extends AbstractEntity implements Serializable {
 
 
     @OneToOne
-    @JoinColumn(name = "student_id") //nullable = true
+    @JoinColumn(name = "student_id")
     private StudentEntity student;
 
     @OneToOne
-    @JoinColumn(name = "trainer_id") //nullable = true
+    @JoinColumn(name = "trainer_id")
     private TrainerEntity trainer;
 
 
-    // for hibernate
     public EmployeeEntity() {
 
     }

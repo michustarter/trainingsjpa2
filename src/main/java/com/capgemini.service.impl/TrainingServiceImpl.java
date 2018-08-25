@@ -16,7 +16,6 @@ import com.capgemini.types.StudentTO;
 import com.capgemini.types.TrainerTO;
 import com.capgemini.types.TrainingTO;
 import com.capgemini.util.*;
-import javassist.compiler.ast.Stmnt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -187,7 +186,6 @@ public class TrainingServiceImpl implements TrainingService {
 
         return trainers;
     }
-    git commit -m "added new Exceptions and new methods implementations"
 
     @Override
     public List<StudentTO> findStudents(TrainingTO trainingTO) throws NullTrainingException {

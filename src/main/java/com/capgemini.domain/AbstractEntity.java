@@ -8,17 +8,17 @@ import java.util.Date;
 @MappedSuperclass
 public class AbstractEntity implements Serializable {
 
-    @Column(nullable = true)
+    @Column
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdTime;
 
-    @Column(nullable = true)
     @Temporal(TemporalType.TIMESTAMP)
+    @Column
     private Date updatedTime;
 
-  /*  @Version
-    public Long version;
-    */
+    @Version
+    public int version;
+
 
     public void setCreatedTime(final Timestamp createdTime) {
         this.createdTime = createdTime;
@@ -28,11 +28,11 @@ public class AbstractEntity implements Serializable {
         this.updatedTime = updatedTime;
     }
 
-//    public Long getVersion() {
-//        return this.version;
-//    }
-//
-//    public void setVersion(final Long version) {
-//        this.version = version;
-//    }
+    public int getVersion() {
+        return this.version;
+    }
+
+    public void setVersion(final int version) {
+        this.version = version;
+    }
 }

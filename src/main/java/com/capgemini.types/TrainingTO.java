@@ -15,8 +15,8 @@ public class TrainingTO {
     private Date dateFrom;
     private Date dateTo;
     private int numberOfHours;
-    private List<String> keyWords;
     private double amount;
+    private List<String> keyWords;
     private List<Long> studentsId;
     private List<Long> trainersId;
 
@@ -143,60 +143,59 @@ public class TrainingTO {
         private Date dateFrom;
         private Date dateTo;
         private int numberOfHours;
-        private List<String> keyWords;
         private double amount;
-        private List<Long> studentsId = new ArrayList<>();
-        private List<Long> trainersId = new ArrayList<>();
+        private List<String> keyWords;
+        private List<Long> studentsId;
+        private List<Long> trainersId;
 
 
         public TrainingTOBuilder() {
             super();
         }
 
-
-
         public TrainingTOBuilder withId(Long id) {
             this.id = id;
             return this;
 
         }
-        public TrainingTOBuilder withTitle(String title){
+
+        public TrainingTOBuilder withTitle(String title) {
             this.title = title;
             return this;
         }
 
-        public TrainingTOBuilder withType(String type){
+        public TrainingTOBuilder withType(String type) {
             this.type = type;
             return this;
         }
 
-        public TrainingTOBuilder withKind(String kind){
+        public TrainingTOBuilder withKind(String kind) {
             this.kind = kind;
             return this;
         }
 
-        public TrainingTOBuilder withDateFrom(String date){
+        public TrainingTOBuilder withDateFrom(String date) {
             this.dateFrom = Date.valueOf(date);
             return this;
 
         }
 
-        public TrainingTOBuilder withDateTo(String date){
+        public TrainingTOBuilder withDateTo(String date) {
             this.dateTo = Date.valueOf(date);
             return this;
         }
 
-        public TrainingTOBuilder withNumberOfHours(int numberOfHours){
+        public TrainingTOBuilder withNumberOfHours(int numberOfHours) {
             this.numberOfHours = numberOfHours;
             return this;
         }
 
-        public TrainingTOBuilder withKeyWords(List<String> keys){
+        public TrainingTOBuilder withKeyWords(List<String> keys) {
             this.keyWords = keys;
             return this;
         }
 
-        public TrainingTOBuilder withAmount(double amount){
+        public TrainingTOBuilder withAmount(double amount) {
             this.amount = amount;
             return this;
         }
@@ -218,45 +217,21 @@ public class TrainingTO {
         }
 
 
-
         public TrainingTO build() {
             checkBeforeBuild(title, type, kind, dateFrom, dateTo, numberOfHours, keyWords, amount);
-            return new TrainingTO(version,id, title, type, kind, dateFrom, dateTo, numberOfHours,
+            return new TrainingTO(version, id, title, type, kind, dateFrom, dateTo, numberOfHours,
                     keyWords, amount, studentsId, trainersId);
         }
 
         private void checkBeforeBuild(String title, String type, String kind, Date dateFrom, Date dateTo,
-                                      Integer numberOfHours, List<String> keyWords, Double amount)
-        {
-            if (title == null || type == null || kind == null || dateFrom == null || dateTo == null ||
-                    numberOfHours == null || keyWords == null || amount == null ) {
+                                      Integer numberOfHours, List<String> keyWords, Double amount) {
+            if (title == null || title.isEmpty() || type == null || type.isEmpty() || kind == null
+                    || kind.isEmpty() || dateFrom == null || dateTo == null || numberOfHours == null
+                    || keyWords == null || keyWords.isEmpty() || amount == null) {
                 throw new RuntimeException("Incorrect training to be created");
             }
 
         }
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        TrainingTO that = (TrainingTO) o;
-        return version == that.version &&
-                numberOfHours == that.numberOfHours &&
-                Double.compare(that.amount, amount) == 0 &&
-                Objects.equals(id, that.id) &&
-                Objects.equals(title, that.title) &&
-                Objects.equals(type, that.type) &&
-                Objects.equals(kind, that.kind) &&
-                Objects.equals(dateFrom, that.dateFrom) &&
-                Objects.equals(dateTo, that.dateTo) &&
-                Objects.equals(keyWords, that.keyWords) &&
-                Objects.equals(studentsId, that.studentsId) &&
-                Objects.equals(trainersId, that.trainersId);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(version, id, title, type, kind, dateFrom, dateTo, numberOfHours, keyWords, amount, studentsId, trainersId);
-    }
 }

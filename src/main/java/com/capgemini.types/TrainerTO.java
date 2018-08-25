@@ -10,10 +10,10 @@ public class TrainerTO {
     private String companyName;
 
 
-    public TrainerTO(int version,Long id, String firstName, String lastName,
+    public TrainerTO(int version, Long id, String firstName, String lastName,
                      String position, String companyName) {
 
-        this.version=version;
+        this.version = version;
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -114,12 +114,14 @@ public class TrainerTO {
 
 
         public TrainerTO build() {
-            checkBeforeBuild(firstName, lastName,position);
-            return new TrainerTO(version,id, firstName, lastName,  position ,companyName);
+            checkBeforeBuild(firstName, lastName, position, companyName);
+            return new TrainerTO(version, id, firstName, lastName, position, companyName);
         }
 
-        private void checkBeforeBuild(String firstName, String lastName, String position) {
-            if (firstName == null || lastName == null || position == null) {
+        private void checkBeforeBuild(String firstName, String lastName, String position, String companyName) {
+            if (firstName == null || firstName.isEmpty() || lastName == null
+                    || lastName.isEmpty() || position == null ||
+                    position.isEmpty() || companyName == null) { //companyName.isEmpty - true dla trenera wewn
                 throw new RuntimeException("Incorrect trainer to be created");
             }
 

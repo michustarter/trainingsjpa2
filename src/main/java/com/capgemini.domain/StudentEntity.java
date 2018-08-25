@@ -34,9 +34,9 @@ public class StudentEntity extends AbstractEntity  implements Serializable {
     @Column(nullable = false)
     private int grade;
 
-    @Column(nullable = false)
+    @OneToOne
+    @JoinColumn(name="boss_id", nullable = false)
     private EmployeeEntity boss;
-
 
     public StudentEntity() {
     }
