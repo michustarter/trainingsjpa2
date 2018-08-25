@@ -2,7 +2,7 @@ package com.capgemini.types;
 
 import java.sql.Date;
 
-public class TrainingSearchCriteriaTO {
+public class CriteriaTrainingTO {
 
     private String title;
     private String type;
@@ -10,10 +10,10 @@ public class TrainingSearchCriteriaTO {
     private Double amountFrom;
     private Double amountTo;
 
-    public TrainingSearchCriteriaTO() {
+    public CriteriaTrainingTO() {
     }
 
-    public TrainingSearchCriteriaTO(String title, String type, Date date, Double amountFrom, Double amountTo) {
+    public CriteriaTrainingTO(String title, String type, Date date, Double amountFrom, Double amountTo) {
         this.title = title;
         this.type = type;
         this.date = date;
@@ -61,7 +61,7 @@ public class TrainingSearchCriteriaTO {
         this.amountTo = amountTo;
     }
 
-    public static class TrainingSearchCriteriaTOBuilder {
+    public static class CriteriaTrainingTOBuilder {
 
         private String title;
         private String type;
@@ -69,10 +69,10 @@ public class TrainingSearchCriteriaTO {
         private Double amountFrom;
         private Double amountTo;
 
-        public TrainingSearchCriteriaTOBuilder() {
+        public CriteriaTrainingTOBuilder() {
         }
 
-        public TrainingSearchCriteriaTOBuilder(String title, String type, Date date, Double amountFrom, Double amountTo) {
+        public CriteriaTrainingTOBuilder(String title, String type, Date date, Double amountFrom, Double amountTo) {
             this.title = title;
             this.type = type;
             this.date = date;
@@ -80,33 +80,33 @@ public class TrainingSearchCriteriaTO {
             this.amountTo = amountTo;
         }
 
-        public TrainingSearchCriteriaTOBuilder withTitle(String title) {
+        public CriteriaTrainingTOBuilder withTitle(String title) {
             this.title = title;
             return this;
         }
 
-        public TrainingSearchCriteriaTOBuilder withType(String type) {
+        public CriteriaTrainingTOBuilder withType(String type) {
             this.type = type;
             return this;
         }
 
-        public TrainingSearchCriteriaTOBuilder withDate(Date date) {
+        public CriteriaTrainingTOBuilder withDate(Date date) {
             this.date = date;
             return this;
         }
 
-        public TrainingSearchCriteriaTOBuilder withAmountFrom(Double amountFrom) {
+        public CriteriaTrainingTOBuilder withAmountFrom(Double amountFrom) {
             this.amountFrom = amountFrom;
             return this;
         }
 
-        public TrainingSearchCriteriaTOBuilder withAmountTo(Double amountTo) {
+        public CriteriaTrainingTOBuilder withAmountTo(Double amountTo) {
             this.amountTo = amountTo;
             return this;
         }
 
-        public TrainingSearchCriteriaTO buil() {
-            return new TrainingSearchCriteriaTO(title, type, date, amountFrom, amountTo);
+        public CriteriaTrainingTO buil() {
+            return new CriteriaTrainingTO(title, type, date, amountFrom, amountTo);
         }
 
     }
