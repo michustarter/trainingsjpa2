@@ -39,17 +39,10 @@ public class StudentServiceTest {
         EmployeeTO bossTO = employeeService.addEmployee(createBossTO());
         int grade = 3;
 
-        EmployeeEntity employeeEntity = EmployeeMapper.toEntity(employeeTO);
-        employeeTO = EmployeeMapper.toTO(employeeEntity);
-
-        EmployeeEntity bossEntity = EmployeeMapper.toEntity(bossTO);
-        bossTO = EmployeeMapper.toTO(bossEntity);
-
         StudentTO newStudentTO = studentService.addStudent(employeeTO, bossTO, grade);
 
         //when
-        StudentEntity studentEntity = StudentMapper.toEntity(newStudentTO);
-        StudentTO foundStudent = studentService.findStudent(studentEntity.getId());
+        StudentTO foundStudent = studentService.findStudent(newStudentTO.getId());
 
         // then
         assertThat(foundStudent, equalTo(newStudentTO));
@@ -65,9 +58,6 @@ public class StudentServiceTest {
         EmployeeTO bossTO = employeeService.addEmployee(createBossTO());
         int grade = 3;
 
-        EmployeeEntity bossEntity = EmployeeMapper.toEntity(bossTO);
-        bossTO = EmployeeMapper.toTO(bossEntity);
-
         //when
         StudentTO newStudentTO = studentService.addStudent(employeeTO, bossTO, grade);
 
@@ -81,16 +71,9 @@ public class StudentServiceTest {
         EmployeeTO employeeTO = employeeService.addEmployee(createEmployeeTO());
         EmployeeTO bossTO = employeeService.addEmployee(createBossTO());
         int grade = 3;
-//employeeTO.getStudentID powinno być != nulla wtedy rzuci wyjątek !!
-        // czyli employeeTo nie maid studenta...
-        EmployeeEntity employeeEntity = EmployeeMapper.toEntity(employeeTO);
-        employeeTO = EmployeeMapper.toTO(employeeEntity);
-
-        EmployeeEntity bossEntity = EmployeeMapper.toEntity(bossTO);
-        bossTO = EmployeeMapper.toTO(bossEntity);
 
         StudentTO newStudentTO = studentService.addStudent(employeeTO, bossTO, grade);
-        //StudentTO duplicateStudent = newStudentTO;
+        employeeTO = employeeService.findEmployee(employeeTO.getId());
 
         //when
        StudentTO duplicate =  studentService.addStudent(employeeTO, bossTO, grade);
@@ -141,12 +124,6 @@ public class StudentServiceTest {
         EmployeeTO bossTO = employeeService.addEmployee(createBossTO());
         int grade = 3;
 
-        EmployeeEntity employeeEntity = EmployeeMapper.toEntity(employeeTO);
-        employeeTO = EmployeeMapper.toTO(employeeEntity);
-
-        EmployeeEntity bossEntity = EmployeeMapper.toEntity(bossTO);
-        bossTO = EmployeeMapper.toTO(bossEntity);
-
         StudentTO newStudentTO = studentService.addStudent(employeeTO, bossTO, grade);
 
         //when
@@ -156,13 +133,105 @@ public class StudentServiceTest {
         //then
         assertNull(foundStudent);
     }
-    /*
-      employeeService.deleteEmployee(removeEmployeeTO);
-        EmployeeTO foundEmployee = employeeService.findEmployee(removeEmployeeTO.getId());
 
-        //then
-        assertNull(foundEmployee);
-    */
+    @Test(expected = NullPersonException.class)
+    @Transactional
+    public void testShouldThrownNullPersonExceptionWhenDeleteNullStudent() throws NullPersonException  {
+        //given
+        StudentTO newStudentTO = null;
+
+        //when
+        studentService.deleteStudent(newStudentTO);
+
+    }
+
+    @Test
+    @Transactional
+    public void testShouldUpdateStudent() throws NullPersonException, BadGradeRangeException, StudentAlreadyExistsException, EmployeeAlreadyExistsException {
+        //given
+        EmployeeTO employeeTO = employeeService.addEmployee(createEmployeeTO());
+        EmployeeTO bossTO = employeeService.addEmployee(createBossTO());
+        int grade = 3;
+        StudentTO studentTO = studentService.addStudent(employeeTO, bossTO, grade);
+
+        studentTO.setFirstName("Tomasz");
+        studentTO.setLastName("Jarucki");
+
+        //when
+        studentTO= studentService.updateStudent(studentTO);
+        StudentTO afterUpdateStudent=studentService.findStudent(studentTO.getId());
+
+        // then
+        assertEquals(afterUpdateStudent.getFirstName(),studentTO.getFirstName());
+       assertEquals(afterUpdateStudent.getLastName(),studentTO.getLastName());
+    }
+
+    @Test(expected = OptimisticLockingFailureException.class)
+    public void testShouldThrownOptimisticLockingException() throws NullPersonException, EmployeeAlreadyExistsException,
+            BadGradeRangeException, StudentAlreadyExistsException {
+
+        //given
+
+        EmployeeTO employeeTO = employeeService.addEmployee(createEmployeeTO());
+        EmployeeTO bossTO = employeeService.addEmployee(createBossTO());
+        int grade = 3;
+        StudentTO studentTO = studentService.addStudent(employeeTO, bossTO, grade);
+
+        //when
+        studentTO.setFirstName("Jakub");
+        studentService.updateStudent(studentTO);
+
+        studentTO.setFirstName("Jacek");
+        studentService.updateStudent(studentTO);
+
+    }
+
+    @Test
+    @Transactional
+    public void testShouldFindStudent() throws NullPersonException, EmployeeAlreadyExistsException, BadGradeRangeException, StudentAlreadyExistsException {
+        //given
+
+        EmployeeTO employeeTO = employeeService.addEmployee(createEmployeeTO());
+        EmployeeTO bossTO = employeeService.addEmployee(createBossTO());
+        int grade = 3;
+        StudentTO studentTO = studentService.addStudent(employeeTO, bossTO, grade);
+
+        //when
+        StudentEntity studentEntity = StudentMapper.toEntity(studentTO);
+
+        // then
+        assertThat(studentTO, equalTo(studentService.findStudent(studentEntity.getId())));
+    }
+
+    @Test
+    @Transactional
+    public void testShouldReturnNullIfDoesNotFindStudent() {
+
+        //when
+        StudentTO studentTO = studentService.findStudent(2L);
+
+        // then
+        assertThat(studentTO, equalTo(null));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     private static EmployeeTO createEmployeeTO() {

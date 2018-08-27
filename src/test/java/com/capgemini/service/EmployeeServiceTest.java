@@ -31,8 +31,7 @@ public class EmployeeServiceTest {
         EmployeeTO newEmployeeTO = employeeService.addEmployee(createEmployeeTO());
 
         //when
-        EmployeeEntity employeeEntity = EmployeeMapper.toEntity(newEmployeeTO);
-        EmployeeTO foundEmployee = employeeService.findEmployee(employeeEntity.getId());
+        EmployeeTO foundEmployee = employeeService.findEmployee(newEmployeeTO.getId());
 
         // then
         assertThat(foundEmployee, equalTo(newEmployeeTO));
@@ -62,11 +61,9 @@ public class EmployeeServiceTest {
 
     @Test
     @Transactional
-
     public void testShouldDeleteEmployee() throws NullPersonException, EmployeeAlreadyExistsException {
         //given
         EmployeeTO removeEmployeeTO = employeeService.addEmployee(createEmployeeTO());
-        // EmployeeEntity employeeEntity= EmployeeMapper.toEntity(removeEmployeeTO);
 
         //when
         employeeService.deleteEmployee(removeEmployeeTO);
@@ -75,6 +72,18 @@ public class EmployeeServiceTest {
         //then
         assertNull(foundEmployee);
     }
+
+    @Test(expected = NullPersonException.class)
+    @Transactional
+    public void testShouldThrownNullPersonExceptionWhenDeleteNullEmployee() throws NullPersonException, EmployeeAlreadyExistsException {
+        //given
+        EmployeeTO removeEmployeeTO = null;
+
+        //when
+        employeeService.deleteEmployee(removeEmployeeTO);
+
+    }
+
 
     @Test
     @Transactional

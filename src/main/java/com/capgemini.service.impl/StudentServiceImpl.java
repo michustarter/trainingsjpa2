@@ -67,6 +67,9 @@ public class StudentServiceImpl implements StudentService {
         employeeEntity.setStudent(studentEntity);
         employeeDao.save(employeeEntity);
 
+        //to musi być !
+        employeeTO=EmployeeMapper.toTO(employeeEntity);
+
 
         StudentTO studentTO = StudentMapper.toTO(studentEntity);
 
@@ -77,19 +80,11 @@ public class StudentServiceImpl implements StudentService {
     @Override
     @Transactional(readOnly = false)
     public void deleteStudent(StudentTO studentTO) throws NullPersonException {
-        if (studentTO == null || studentTO.getId() == null/* || !studentDao.findById(studentTO.getId()).isPresent()*/) {
+        if (studentTO == null || studentTO.getId() == null) {
             throw new NullPersonException("Cannot delete non-existent student!");
         }
-
-        //*select e from EmployeeEntity e where e.student.id = :student*/
-       /* List<EmployeeEntity> employees = new ArrayList<>();
-        employees.addAll(employeeDao.findAll());
-        EmployeeEntity employeeEntity = employees.stream()
-                .filter(e -> e.getStudent().getId() == studentTO.getId())
-                .collect(Collectors.toList())
-                .get(0);*/
         StudentEntity studentEntity = StudentMapper.toEntity(studentTO);
-       //**
+
         EmployeeEntity employeeEntity = employeeDao.findByStudent(studentEntity);
         employeeEntity.setStudent(null);
         employeeDao.save(employeeEntity);
@@ -104,16 +99,12 @@ public class StudentServiceImpl implements StudentService {
             throw new NullPersonException("Cannot update student with empty data!");
         }
         StudentEntity studentEntity = StudentMapper.toEntity(studentTO);
+        EmployeeEntity boss = employeeDao.findById(studentTO.getBossId()).get();
+        studentEntity.setBoss(boss);
         studentEntity = studentDao.save(studentEntity);
         studentTO = StudentMapper.toTO(studentEntity);
 
-
-        List<EmployeeEntity> employees = employeeDao.findAll();
-        StudentTO finalStudentTO = studentTO;
-        EmployeeEntity employeeEntity = employees.stream()
-                .filter(e -> e.getStudent().getId() == finalStudentTO.getId())
-                .collect(Collectors.toList())
-                .get(0);
+        EmployeeEntity employeeEntity=employeeDao.findByStudent(studentEntity);
         employeeEntity.setStudent(studentEntity);
         employeeDao.save(employeeEntity);
 

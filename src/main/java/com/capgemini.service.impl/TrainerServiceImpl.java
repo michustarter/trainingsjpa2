@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -38,7 +39,7 @@ public class TrainerServiceImpl implements TrainerService {
     public TrainerTO addTrainer(EmployeeTO employeeTO) throws NullPersonException, TrainerAlreadyExistsException {
         //zakładam, że employee istnieje (jeśli nie istnieje, to rzucam wyjątek z info ze musze najpierw dodac employeee
 
-        if (employeeTO == null || employeeTO.getId() == null || !employeeDao.findById(employeeTO.getId()).isPresent()) {
+        if (employeeTO == null) {
             throw new NullPersonException("Cannot create trainer if employee does not exist in database!");
         }
         if (employeeTO.getTrainerId() != null) {
@@ -86,7 +87,7 @@ public class TrainerServiceImpl implements TrainerService {
     public void deleteTrainer(TrainerTO trainerTO) throws NullPersonException { /*jesli companyName==0 to juz na bank on nalezy do jakiegos Employee
         bo musialem dodac wczesniej go metodą addTrainer, nie patrzec na mozl stworzenia samym konstruktorem bo to nie jest ok w tym przypadku */
 
-        if (trainerTO == null || trainerTO.getId() == null || !trainerDao.findById(trainerTO.getId()).isPresent()) {
+        if (trainerTO == null) {
             throw new NullPersonException("Cannot delete non-existent trainer!");
         }
         TrainerEntity trainerEntity= TrainerMapper.toEntity(trainerTO);
@@ -113,22 +114,28 @@ public class TrainerServiceImpl implements TrainerService {
         if (trainerTO == null) { //nie spr czy studentTO istnieje w bazie danych, jesli nie istineje to go po prostu dodam
             throw new NullPersonException("Cannot update student with empty data!");
         }
+
         TrainerEntity trainerEntity = TrainerMapper.toEntity(trainerTO);
         trainerEntity = trainerDao.save(trainerEntity);
         trainerTO = TrainerMapper.toTO(trainerEntity);
 
-
-        List<EmployeeEntity> employees = employeeDao.findAll();
-        TrainerTO finalTrainerTO = trainerTO;
-        EmployeeEntity employeeEntity = employees.stream()
-                .filter(e -> e.getTrainer().getId() == finalTrainerTO.getId())
-                .collect(Collectors.toList())
-                .get(0);
-        if(employeeEntity!=null) { // trener zewn nie jest pracownikiem, wiec jak go nie znajdzie to  eE==null
+        if(employeeDao.findByTrainer(trainerEntity)!=null) {
+            EmployeeEntity employeeEntity=employeeDao.findByTrainer(trainerEntity);
             employeeEntity.setTrainer(trainerEntity);
             employeeDao.save(employeeEntity);
         }
+
         return trainerTO;
+    }
+
+    @Override
+    public TrainerTO findTrainer(Long id) {
+        Optional<TrainerEntity> found = trainerDao.findById(id);
+        boolean check = found.isPresent();
+        if (check) {
+            return TrainerMapper.toTO(found.get());
+        }
+        return null;
     }
 }
 

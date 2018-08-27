@@ -36,7 +36,7 @@
         <counts>
           <entry key="class" value="12" />
           <entry key="iml" value="1" />
-          <entry key="java" value="476" />
+          <entry key="java" value="492" />
           <entry key="pom" value="1" />
           <entry key="properties" value="4" />
           <entry key="xml" value="5" />
@@ -46,7 +46,7 @@
         <counts>
           <entry key="CLASS" value="12" />
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="476" />
+          <entry key="JAVA" value="492" />
           <entry key="Properties" value="4" />
           <entry key="XML" value="6" />
         </counts>
@@ -54,14 +54,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="87" />
-          <entry key="java" value="20276" />
+          <entry key="java" value="21203" />
           <entry key="properties" value="32" />
           <entry key="xml" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="20276" />
+          <entry key="JAVA" value="21203" />
           <entry key="PLAIN_TEXT" value="87" />
           <entry key="Properties" value="32" />
           <entry key="XML" value="7" />
@@ -74,13 +74,98 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.service.impl/EmployeeServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="449">
+              <caret line="80" column="5" lean-forward="true" selection-start-line="72" selection-start-column="4" selection-end-line="80" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.service.impl/StudentServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="67" column="41" lean-forward="true" selection-start-line="67" selection-start-column="41" selection-end-line="67" selection-end-column="41" />
+            <state relative-caret-position="316">
+              <caret line="104" column="7" selection-start-line="104" selection-start-column="7" selection-end-line="104" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/capgemini/service/StudentServiceTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="392">
+              <caret line="167" lean-forward="true" selection-start-line="147" selection-start-column="4" selection-end-line="167" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.service.impl/TrainerServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="259">
+              <caret line="119" column="54" lean-forward="true" selection-start-line="119" selection-start-column="54" selection-end-line="119" selection-end-column="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/capgemini/service/EmployeeServiceTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="475">
+              <caret line="115" column="51" lean-forward="true" selection-start-line="109" selection-end-line="115" selection-end-column="51" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/capgemini/service/TrainerServiceTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="69">
+              <caret line="111" column="33" lean-forward="true" selection-start-line="111" selection-start-column="33" selection-end-line="111" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.service/EmployeeService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="228">
+              <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.service/TrainerService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="266">
+              <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.types/TrainerTO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1461">
+              <caret line="134" column="37" selection-start-line="134" selection-start-column="37" selection-end-line="134" selection-end-column="37" />
+              <folding>
+                <element signature="e#3902#3903#0" expanded="true" />
+                <element signature="e#3994#3995#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -90,89 +175,14 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.domain/EmployeeEntity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="38">
-              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+              <caret line="50" selection-start-line="50" selection-end-line="50" />
               <folding>
                 <element signature="e#960#961#0" expanded="true" />
                 <element signature="e#990#991#0" expanded="true" />
                 <element signature="e#1033#1034#0" expanded="true" />
                 <element signature="e#1071#1072#0" expanded="true" />
+                <element signature="e#1123#1124#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.service.impl/TrainerServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="94" column="63" selection-start-line="94" selection-start-column="63" selection-end-line="94" selection-end-column="63" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.dao/EmployeeDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/capgemini/service/StudentServiceTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="93" selection-start-line="93" selection-end-line="93" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.types/TrainingTO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3496">
-              <caret line="237" column="37" selection-start-line="237" selection-start-column="37" selection-end-line="237" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.types/StudentTO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="53" selection-start-line="53" selection-end-line="53" />
-              <folding>
-                <element signature="e#1090#1091#0" expanded="true" />
-                <element signature="e#3640#3641#0" expanded="true" />
-                <element signature="e#3734#3735#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.domain/StudentEntity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="37" selection-start-line="37" selection-end-line="37" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1008#1009#0" expanded="true" />
-                <element signature="e#1046#1047#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.domain/AbstractEntity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
@@ -200,7 +210,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/capgemini.util/IncorrectTrainerException.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/capgemini.util/NullBossException.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/capgemini.util/NullPersonException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/capgemini.service/TrainerService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/capgemini.util/NullTrainingException.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/capgemini.util/StudentAlreadyExistsException.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/capgemini.util/TrainerAlreadyExistsException.java" />
@@ -225,7 +234,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/capgemini.util/TrainerCannotBeAStudentException.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/capgemini.exceptions/InvalidConditionsException.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/capgemini.service.impl/NullStudentException.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/capgemini/service/TrainerServiceTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/capgemini/service/TrainingServiceTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/capgemini.service/TrainingService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/capgemini.domain/EmployeeEntity.java" />
@@ -237,17 +245,19 @@
         <option value="$PROJECT_DIR$/src/main/java/com/capgemini.types/EmployeeTO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/capgemini.dao.impl/TrainingDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/capgemini.mappers/EmployeeMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/capgemini.service.impl/EmployeeServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/capgemini.service/StudentService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/capgemini.mappers/StudentMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/capgemini.types/StudentTO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/capgemini.types/TrainerTO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/capgemini.types/TrainingTO.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/capgemini/service/EmployeeServiceTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/capgemini.dao/TrainingDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/capgemini.service.impl/EmployeeServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/capgemini.types/StudentTO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/capgemini.mappers/StudentMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/capgemini.service.impl/StudentServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/capgemini/service/EmployeeServiceTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/capgemini.service/TrainerService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/capgemini.service.impl/TrainerServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/capgemini/service/StudentServiceTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/capgemini/service/TrainerServiceTest.java" />
       </list>
     </option>
   </component>
@@ -515,7 +525,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="cap&#9;FILE&#9;file://C:/Users/mratajcz/Desktop/trainingsjpa2/src/main/java/com/capgemini.dao.impl&#10;capgemini&#9;FILE&#9;file://C:/Users/mratajcz/Desktop/trainingsjpa2/src/main/java/com/capgemini.dao.impl" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535374696009" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535379868407" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -554,8 +564,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.StudentServiceTest.testShouldThrownStudentAlreadyExistsExceptionWhenAddDuplicateStudent">
-    <configuration name="EmployeeServiceTest.testShouldDeleteEmployee" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.TrainerServiceTest.testShouldThrownOptimisticLockingException">
+    <configuration name="StudentServiceTest.testShouldUpdateStudent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="trainingsjpa2" />
       <extension name="coverage">
         <pattern>
@@ -564,14 +574,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.capgemini.service" />
-      <option name="MAIN_CLASS_NAME" value="com.capgemini.service.EmployeeServiceTest" />
-      <option name="METHOD_NAME" value="testShouldDeleteEmployee" />
+      <option name="MAIN_CLASS_NAME" value="com.capgemini.service.StudentServiceTest" />
+      <option name="METHOD_NAME" value="testShouldUpdateStudent" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StudentServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TrainerServiceTest.testShouldDeleteExternalTrainer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="trainingsjpa2" />
       <extension name="coverage">
         <pattern>
@@ -580,28 +590,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.capgemini.service" />
-      <option name="MAIN_CLASS_NAME" value="com.capgemini.service.StudentServiceTest" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="StudentServiceTest.testShouldAddNewStudent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="trainingsjpa2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.capgemini.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.capgemini.service" />
-      <option name="MAIN_CLASS_NAME" value="com.capgemini.service.StudentServiceTest" />
-      <option name="METHOD_NAME" value="testShouldAddNewStudent" />
+      <option name="MAIN_CLASS_NAME" value="com.capgemini.service.TrainerServiceTest" />
+      <option name="METHOD_NAME" value="testShouldDeleteExternalTrainer" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StudentServiceTest.testShouldDeleteStudent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TrainerServiceTest.testShouldDeleteTrainer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="trainingsjpa2" />
       <extension name="coverage">
         <pattern>
@@ -610,14 +606,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.capgemini.service" />
-      <option name="MAIN_CLASS_NAME" value="com.capgemini.service.StudentServiceTest" />
-      <option name="METHOD_NAME" value="testShouldDeleteStudent" />
+      <option name="MAIN_CLASS_NAME" value="com.capgemini.service.TrainerServiceTest" />
+      <option name="METHOD_NAME" value="testShouldDeleteTrainer" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StudentServiceTest.testShouldThrownStudentAlreadyExistsExceptionWhenAddDuplicateStudent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TrainerServiceTest.testShouldThrownOptimisticLockingException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="trainingsjpa2" />
       <extension name="coverage">
         <pattern>
@@ -626,27 +622,43 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.capgemini.service" />
-      <option name="MAIN_CLASS_NAME" value="com.capgemini.service.StudentServiceTest" />
-      <option name="METHOD_NAME" value="testShouldThrownStudentAlreadyExistsExceptionWhenAddDuplicateStudent" />
+      <option name="MAIN_CLASS_NAME" value="com.capgemini.service.TrainerServiceTest" />
+      <option name="METHOD_NAME" value="testShouldThrownOptimisticLockingException" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TrainerServiceTest.testShouldUpdateTrainer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="trainingsjpa2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.capgemini.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.capgemini.service" />
+      <option name="MAIN_CLASS_NAME" value="com.capgemini.service.TrainerServiceTest" />
+      <option name="METHOD_NAME" value="testShouldUpdateTrainer" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.StudentServiceTest.testShouldDeleteStudent" />
-      <item itemvalue="JUnit.EmployeeServiceTest.testShouldDeleteEmployee" />
-      <item itemvalue="JUnit.StudentServiceTest.testShouldAddNewStudent" />
-      <item itemvalue="JUnit.StudentServiceTest" />
-      <item itemvalue="JUnit.StudentServiceTest.testShouldThrownStudentAlreadyExistsExceptionWhenAddDuplicateStudent" />
+      <item itemvalue="JUnit.TrainerServiceTest.testShouldDeleteTrainer" />
+      <item itemvalue="JUnit.TrainerServiceTest.testShouldDeleteExternalTrainer" />
+      <item itemvalue="JUnit.StudentServiceTest.testShouldUpdateStudent" />
+      <item itemvalue="JUnit.TrainerServiceTest.testShouldUpdateTrainer" />
+      <item itemvalue="JUnit.TrainerServiceTest.testShouldThrownOptimisticLockingException" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.StudentServiceTest.testShouldThrownStudentAlreadyExistsExceptionWhenAddDuplicateStudent" />
-        <item itemvalue="JUnit.StudentServiceTest" />
-        <item itemvalue="JUnit.StudentServiceTest.testShouldDeleteStudent" />
-        <item itemvalue="JUnit.StudentServiceTest.testShouldAddNewStudent" />
-        <item itemvalue="JUnit.EmployeeServiceTest.testShouldDeleteEmployee" />
+        <item itemvalue="JUnit.TrainerServiceTest.testShouldThrownOptimisticLockingException" />
+        <item itemvalue="JUnit.TrainerServiceTest.testShouldUpdateTrainer" />
+        <item itemvalue="JUnit.StudentServiceTest.testShouldUpdateStudent" />
+        <item itemvalue="JUnit.TrainerServiceTest.testShouldDeleteExternalTrainer" />
+        <item itemvalue="JUnit.TrainerServiceTest.testShouldDeleteTrainer" />
       </list>
     </recent_temporary>
   </component>
@@ -664,35 +676,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="StudentServiceTest_testShouldAddNewStudent - 2018.08.27 at 14h 37m 17s.xml">
-      <configuration name="StudentServiceTest.testShouldAddNewStudent" configurationId="JUnit" />
+    <history-entry file="TrainerServiceTest_testShouldAddNewTrainer - 2018.08.27 at 15h 54m 56s.xml">
+      <configuration name="TrainerServiceTest.testShouldAddNewTrainer" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="StudentServiceTest - 2018.08.27 at 14h 41m 24s.xml">
-      <configuration name="StudentServiceTest" configurationId="JUnit" />
+    <history-entry file="TrainerServiceTest_testShouldAddNewTrainer - 2018.08.27 at 15h 58m 37s.xml">
+      <configuration name="TrainerServiceTest.testShouldAddNewTrainer" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="StudentServiceTest_testShouldDeleteStudent - 2018.08.27 at 14h 44m 50s.xml">
+    <history-entry file="TrainerServiceTest_testShouldAddNewExternalTrainer - 2018.08.27 at 16h 00m 13s.xml">
+      <configuration name="TrainerServiceTest.testShouldAddNewExternalTrainer" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="StudentServiceTest_testShouldDeleteStudent - 2018.08.27 at 16h 01m 56s.xml">
       <configuration name="StudentServiceTest.testShouldDeleteStudent" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="StudentServiceTest_testShouldDeleteStudent - 2018.08.27 at 14h 45m 12s.xml">
-      <configuration name="StudentServiceTest.testShouldDeleteStudent" configurationId="JUnit" />
+    <history-entry file="TrainerServiceTest_testShouldDeleteTrainer - 2018.08.27 at 16h 03m 42s.xml">
+      <configuration name="TrainerServiceTest.testShouldDeleteTrainer" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="StudentServiceTest - 2018.08.27 at 14h 45m 38s.xml">
-      <configuration name="StudentServiceTest" configurationId="JUnit" />
+    <history-entry file="TrainerServiceTest_testShouldDeleteExternalTrainer - 2018.08.27 at 16h 04m 31s.xml">
+      <configuration name="TrainerServiceTest.testShouldDeleteExternalTrainer" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="StudentServiceTest_testShouldThrownStudentAlreadyExistsExceptionWhenAddDuplicateStudent - 2018.08.27 at 14h 46m 09s.xml">
-      <configuration name="StudentServiceTest.testShouldThrownStudentAlreadyExistsExceptionWhenAddDuplicateStudent" configurationId="JUnit" />
+    <history-entry file="StudentServiceTest_testShouldUpdateStudent - 2018.08.27 at 16h 19m 45s.xml">
+      <configuration name="StudentServiceTest.testShouldUpdateStudent" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="StudentServiceTest_testShouldThrownStudentAlreadyExistsExceptionWhenAddDuplicateStudent - 2018.08.27 at 14h 47m 29s.xml">
-      <configuration name="StudentServiceTest.testShouldThrownStudentAlreadyExistsExceptionWhenAddDuplicateStudent" configurationId="JUnit" />
+    <history-entry file="StudentServiceTest_testShouldUpdateStudent - 2018.08.27 at 16h 20m 18s.xml">
+      <configuration name="StudentServiceTest.testShouldUpdateStudent" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="StudentServiceTest_testShouldThrownStudentAlreadyExistsExceptionWhenAddDuplicateStudent - 2018.08.27 at 14h 49m 10s.xml">
-      <configuration name="StudentServiceTest.testShouldThrownStudentAlreadyExistsExceptionWhenAddDuplicateStudent" configurationId="JUnit" />
+    <history-entry file="StudentServiceTest_testShouldUpdateStudent - 2018.08.27 at 16h 20m 46s.xml">
+      <configuration name="StudentServiceTest.testShouldUpdateStudent" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="StudentServiceTest_testShouldThrownStudentAlreadyExistsExceptionWhenAddDuplicateStudent - 2018.08.27 at 14h 49m 29s.xml">
-      <configuration name="StudentServiceTest.testShouldThrownStudentAlreadyExistsExceptionWhenAddDuplicateStudent" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="StudentServiceTest_testShouldThrownStudentAlreadyExistsExceptionWhenAddDuplicateStudent - 2018.08.27 at 14h 49m 44s.xml">
-      <configuration name="StudentServiceTest.testShouldThrownStudentAlreadyExistsExceptionWhenAddDuplicateStudent" configurationId="JUnit" />
+    <history-entry file="TrainerServiceTest_testShouldUpdateTrainer - 2018.08.27 at 16h 22m 46s.xml">
+      <configuration name="TrainerServiceTest.testShouldUpdateTrainer" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -717,8 +729,8 @@
       <window_info id="Favorites" order="6" sideWeight="0.5005599" side_tool="true" weight="0.1895811" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32922733" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.33370662" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.47368422" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.31466964" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.54199326" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32922733" />
@@ -736,7 +748,7 @@
       <window_info anchor="right" id="Maven Projects" order="7" weight="0.27873254" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4994401" visible="true" weight="0.16487648" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4994401" visible="true" weight="0.16917293" />
       <window_info id="Structure" order="1" sideWeight="0.5005599" side_tool="true" weight="0.1895811" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -745,15 +757,15 @@
       <window_info id="Favorites" order="6" sideWeight="0.5005599" side_tool="true" weight="0.1895811" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32922733" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2743561" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39977604" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.31466964" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.54199326" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32922733" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32922733" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.2743561" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32922733" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.32922733" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.21836506" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24973147" />
@@ -781,6 +793,78 @@
           <line>37</line>
           <properties />
           <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/capgemini.types/StudentTO.java</url>
+          <line>142</line>
+          <properties />
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/capgemini.mappers/StudentMapper.java</url>
+          <line>12</line>
+          <properties />
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/capgemini.mappers/StudentMapper.java</url>
+          <line>17</line>
+          <properties />
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/capgemini.mappers/StudentMapper.java</url>
+          <line>19</line>
+          <properties />
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/capgemini.mappers/StudentMapper.java</url>
+          <line>24</line>
+          <properties />
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/capgemini.mappers/StudentMapper.java</url>
+          <line>26</line>
+          <properties />
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/capgemini.mappers/StudentMapper.java</url>
+          <line>25</line>
+          <properties />
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/capgemini.mappers/StudentMapper.java</url>
+          <line>27</line>
+          <properties />
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/capgemini.mappers/StudentMapper.java</url>
+          <line>28</line>
+          <properties />
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/capgemini.mappers/StudentMapper.java</url>
+          <line>30</line>
+          <properties />
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/capgemini.mappers/StudentMapper.java</url>
+          <line>29</line>
+          <properties />
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/capgemini.mappers/StudentMapper.java</url>
+          <line>31</line>
+          <properties />
+          <option name="timeStamp" value="32" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -848,13 +932,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.service/TrainerService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/javax/transaction/javax.transaction-api/1.2/javax.transaction-api-1.2.jar!/javax/transaction/Transactional.class">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -866,9 +943,6 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.service.impl/NullStudentException.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/capgemini/service/TrainerServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/capgemini/service/TrainingServiceTest.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -952,53 +1026,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.service/StudentService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.service/EmployeeService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="14" column="37" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.mappers/EmployeeMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="27" column="9" selection-start-line="19" selection-start-column="7" selection-end-line="27" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.types/EmployeeTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1693">
-          <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
-          <folding>
-            <element signature="e#863#864#0" expanded="true" />
-            <element signature="e#888#889#0" expanded="true" />
-            <element signature="e#2032#2033#0" expanded="true" />
-            <element signature="e#2063#2064#0" expanded="true" />
-            <element signature="e#4205#4206#0" expanded="true" />
-            <element signature="e#4306#4307#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.types/TrainerTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="134" column="37" selection-start-line="134" selection-start-column="37" selection-end-line="134" selection-end-column="37" />
-          <folding>
-            <element signature="e#3902#3903#0" expanded="true" />
-            <element signature="e#3994#3995#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/ArrayList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -1017,23 +1044,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
           <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.service.impl/EmployeeServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="44" column="26" selection-start-line="44" selection-start-column="26" selection-end-line="44" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/capgemini/service/EmployeeServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="65" column="26" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1058,18 +1068,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.types/StudentTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="53" selection-start-line="53" selection-end-line="53" />
-          <folding>
-            <element signature="e#1090#1091#0" expanded="true" />
-            <element signature="e#3640#3641#0" expanded="true" />
-            <element signature="e#3734#3735#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.dao/EmployeeDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
@@ -1077,23 +1075,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.domain/EmployeeEntity.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.service/StudentService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding>
-            <element signature="e#960#961#0" expanded="true" />
-            <element signature="e#990#991#0" expanded="true" />
-            <element signature="e#1033#1034#0" expanded="true" />
-            <element signature="e#1071#1072#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.mappers/StudentMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
+        <state relative-caret-position="114">
+          <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -1104,39 +1089,162 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.types/EmployeeTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="988">
+          <caret line="86" column="28" lean-forward="true" selection-start-line="86" selection-start-column="28" selection-end-line="86" selection-end-column="28" />
+          <folding>
+            <element signature="e#863#864#0" expanded="true" />
+            <element signature="e#888#889#0" expanded="true" />
+            <element signature="e#2032#2033#0" expanded="true" />
+            <element signature="e#2063#2064#0" expanded="true" />
+            <element signature="e#4205#4206#0" expanded="true" />
+            <element signature="e#4306#4307#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.mappers/EmployeeMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="19" column="30" lean-forward="true" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.types/StudentTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1148">
+          <caret line="142" selection-start-line="142" selection-end-line="142" />
+          <folding>
+            <element signature="e#1060#1061#0" expanded="true" />
+            <element signature="e#1090#1091#0" expanded="true" />
+            <element signature="e#1133#1134#0" expanded="true" />
+            <element signature="e#1171#1172#0" expanded="true" />
+            <element signature="e#1210#1211#0" expanded="true" />
+            <element signature="e#1244#1245#0" expanded="true" />
+            <element signature="e#1278#1279#0" expanded="true" />
+            <element signature="e#1306#1307#0" expanded="true" />
+            <element signature="e#1348#1349#0" expanded="true" />
+            <element signature="e#1384#1385#0" expanded="true" />
+            <element signature="e#1434#1435#0" expanded="true" />
+            <element signature="e#1476#1477#0" expanded="true" />
+            <element signature="e#1524#1525#0" expanded="true" />
+            <element signature="e#1564#1565#0" expanded="true" />
+            <element signature="e#1612#1613#0" expanded="true" />
+            <element signature="e#1652#1653#0" expanded="true" />
+            <element signature="e#4201#4202#0" expanded="true" />
+            <element signature="e#4295#4296#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.domain/StudentEntity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
+        <state relative-caret-position="189">
+          <caret line="88" selection-start-line="88" selection-end-line="88" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1008#1009#0" expanded="true" />
             <element signature="e#1046#1047#0" expanded="true" />
+            <element signature="e#1824#1825#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.domain/EmployeeEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
+          <folding>
+            <element signature="e#960#961#0" expanded="true" />
+            <element signature="e#990#991#0" expanded="true" />
+            <element signature="e#1033#1034#0" expanded="true" />
+            <element signature="e#1071#1072#0" expanded="true" />
+            <element signature="e#1123#1124#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.mappers/StudentMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.service/EmployeeService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.service/TrainerService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.service.impl/EmployeeServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="80" column="5" lean-forward="true" selection-start-line="72" selection-start-column="4" selection-end-line="80" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.service.impl/TrainerServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="94" column="63" selection-start-line="94" selection-start-column="63" selection-end-line="94" selection-end-column="63" />
+        <state relative-caret-position="259">
+          <caret line="119" column="54" lean-forward="true" selection-start-line="119" selection-start-column="54" selection-end-line="119" selection-end-column="54" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/capgemini/service/StudentServiceTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.types/TrainerTO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="93" selection-start-line="93" selection-end-line="93" />
+        <state relative-caret-position="1461">
+          <caret line="134" column="37" selection-start-line="134" selection-start-column="37" selection-end-line="134" selection-end-column="37" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#3902#3903#0" expanded="true" />
+            <element signature="e#3994#3995#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/capgemini.service.impl/StudentServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="67" column="41" lean-forward="true" selection-start-line="67" selection-start-column="41" selection-end-line="67" selection-end-column="41" />
+        <state relative-caret-position="316">
+          <caret line="104" column="7" selection-start-line="104" selection-start-column="7" selection-end-line="104" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/capgemini/service/StudentServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="167" lean-forward="true" selection-start-line="147" selection-start-column="4" selection-end-line="167" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/capgemini/service/EmployeeServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="115" column="51" lean-forward="true" selection-start-line="109" selection-end-line="115" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/capgemini/service/TrainerServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="111" column="33" lean-forward="true" selection-start-line="111" selection-start-column="33" selection-end-line="111" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

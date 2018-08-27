@@ -15,4 +15,6 @@ public interface TrainerService {
 
     TrainerTO updateTrainer(TrainerTO trainerTO) throws NullPersonException;
 
+    TrainerTO findTrainer(Long id);
+
 }

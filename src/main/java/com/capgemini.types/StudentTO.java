@@ -54,6 +54,34 @@ public class StudentTO {
         return version;
     }
 
+    public void setVersion(int version) {
+        this.version = version;
+    }
+
+    public void setGrade(int grade) {
+        this.grade = grade;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setBossId(Long bossId) {
+        this.bossId = bossId;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
     public static class StudentTOBuilder {
 
         private int version;

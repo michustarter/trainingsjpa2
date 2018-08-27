@@ -49,7 +49,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Transactional(readOnly = false)
     public void deleteEmployee(EmployeeTO employeeTO) throws NullPersonException {
         // zakładam, że eTO ma ID, jelsi nie ma ID -> to nie istnieje w bazie danych
-        if (employeeTO.getId() == null || !employeeDao.findById(employeeTO.getId()).isPresent()) {
+        if (employeeTO==null) {
             throw new NullPersonException("Cannot delete non-existent employee!");
         }
         // eTO zakł że ma ID wiec tutaj już tego nie sprawdzam w ifie że != null
