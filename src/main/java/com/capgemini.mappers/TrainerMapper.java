@@ -24,11 +24,11 @@ public class TrainerMapper {
 
     }
 
-    public static  TrainerEntity toEntity(TrainerTO trainerTO) {
-        if(trainerTO==null) {
+    public static TrainerEntity toEntity(TrainerTO trainerTO) {
+        if (trainerTO == null) {
             return null;
         }
-       TrainerEntity trainerEntity= new TrainerEntity();
+        TrainerEntity trainerEntity = new TrainerEntity();
 
         trainerEntity.setVersion(trainerTO.getVersion());
         trainerEntity.setId(trainerTO.getId());
@@ -40,17 +40,4 @@ public class TrainerMapper {
         return trainerEntity;
     }
 
-    public static List<TrainerTO> map2TOs(List<TrainerEntity> trainerEntities) {
-        if (trainerEntities != null) {
-            return trainerEntities.stream().map(TrainerMapper::toTO).collect(Collectors.toList());
-        }
-        return new ArrayList<>();
-    }
-
-    public static List<TrainerEntity> map2Entities(List<TrainerTO> trainerTOs) {
-        if (trainerTOs != null) {
-            return trainerTOs.stream().map(TrainerMapper::toEntity).collect(Collectors.toList());
-        }
-        return new ArrayList<>();
-    }
 }

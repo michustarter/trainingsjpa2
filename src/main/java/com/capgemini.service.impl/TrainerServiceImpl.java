@@ -21,6 +21,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * Klasa serwisowa agregująca logikę biznesową dla trenera
+ */
 @Service
 @Transactional
 public class TrainerServiceImpl implements TrainerService {
@@ -34,10 +37,17 @@ public class TrainerServiceImpl implements TrainerService {
         this.trainerDao = trainerDao;
     }
 
+    /**
+     * Metoda dodająca trenewa wewnętrznego
+     *
+     * @param employeeTO
+     * @return
+     * @throws NullPersonException           - gdy dodany trener jest pustym obiektem
+     * @throws TrainerAlreadyExistsException - gdy dodawany trener znajduje się juz w bazie danych
+     */
     @Override
     @Transactional(readOnly = false)
     public TrainerTO addTrainer(EmployeeTO employeeTO) throws NullPersonException, TrainerAlreadyExistsException {
-        //zakładam, że employee istnieje (jeśli nie istnieje, to rzucam wyjątek z info ze musze najpierw dodac employeee
 
         if (employeeTO == null) {
             throw new NullPersonException("Cannot create trainer if employee does not exist in database!");
@@ -63,6 +73,14 @@ public class TrainerServiceImpl implements TrainerService {
         return trainerTO;
     }
 
+    /**
+     * Metoda dodająca trenera zewnętrznego
+     *
+     * @param trainerTO
+     * @return
+     * @throws NullPersonException       - gdy przekazany trener do dodania jest pustym obiektem
+     * @throws IncorrectTrainerException - gdy firma zewnętrzna nie posiada nazwy (jesli nie posiada nazwy, byłby to trener wewnętrzny)
+     */
     @Override
     @Transactional(readOnly = false)
     public TrainerTO addExternalTrainer(TrainerTO trainerTO) throws NullPersonException, IncorrectTrainerException {
@@ -84,26 +102,18 @@ public class TrainerServiceImpl implements TrainerService {
 
     @Override
     @Transactional(readOnly = false)
-    public void deleteTrainer(TrainerTO trainerTO) throws NullPersonException { /*jesli companyName==0 to juz na bank on nalezy do jakiegos Employee
-        bo musialem dodac wczesniej go metodą addTrainer, nie patrzec na mozl stworzenia samym konstruktorem bo to nie jest ok w tym przypadku */
+    public void deleteTrainer(TrainerTO trainerTO) throws NullPersonException {
 
         if (trainerTO == null) {
             throw new NullPersonException("Cannot delete non-existent trainer!");
         }
-        TrainerEntity trainerEntity= TrainerMapper.toEntity(trainerTO);
+        TrainerEntity trainerEntity = TrainerMapper.toEntity(trainerTO);
 
         if (trainerTO.getCompanyName().length() == 0) {
             EmployeeEntity employeeEntity = employeeDao.findByTrainer(trainerEntity);
             employeeEntity.setTrainer(null);
             employeeDao.save(employeeEntity);
 
-          /*  List<EmployeeEntity> employees = employeeDao.findAll();
-            EmployeeEntity employeeEntity = employees.stream()
-                    .filter(e -> e.getTrainer().getId() == trainerTO.getId())
-                    .collect(Collectors.toList())
-                    .get(0);
-            employeeEntity.setTrainer(null);
-            employeeDao.save(employeeEntity);*/
         }
         trainerDao.delete(trainerEntity);
     }
@@ -111,7 +121,7 @@ public class TrainerServiceImpl implements TrainerService {
     @Override
     @Transactional(readOnly = false)
     public TrainerTO updateTrainer(TrainerTO trainerTO) throws NullPersonException {
-        if (trainerTO == null) { //nie spr czy studentTO istnieje w bazie danych, jesli nie istineje to go po prostu dodam
+        if (trainerTO == null) {
             throw new NullPersonException("Cannot update student with empty data!");
         }
 
@@ -119,8 +129,8 @@ public class TrainerServiceImpl implements TrainerService {
         trainerEntity = trainerDao.save(trainerEntity);
         trainerTO = TrainerMapper.toTO(trainerEntity);
 
-        if(employeeDao.findByTrainer(trainerEntity)!=null) {
-            EmployeeEntity employeeEntity=employeeDao.findByTrainer(trainerEntity);
+        if (employeeDao.findByTrainer(trainerEntity) != null) {
+            EmployeeEntity employeeEntity = employeeDao.findByTrainer(trainerEntity);
             employeeEntity.setTrainer(trainerEntity);
             employeeDao.save(employeeEntity);
         }

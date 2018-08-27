@@ -15,7 +15,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
-
+/**
+ * Klasa serwisowa agregująca logikę biznesową dla pracownika firmy
+ */
 @Service
 @Transactional
 public class EmployeeServiceImpl implements EmployeeService {
@@ -34,8 +36,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (employeeTO == null) {
             throw new NullPersonException("Cannot add employee to database with empty data!");
         }
-        //isPresent dodane zamiast != null
-        if (employeeTO.getId() != null /*|| employeeDao.findById(employeeTO.getId()).isPresent()*/) {
+        if (employeeTO.getId() != null) {
             throw new EmployeeAlreadyExistsException("This employee already exists in database!");
         }
         EmployeeEntity employeeEntity = EmployeeMapper.toEntity(employeeTO);
@@ -48,11 +49,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     @Transactional(readOnly = false)
     public void deleteEmployee(EmployeeTO employeeTO) throws NullPersonException {
-        // zakładam, że eTO ma ID, jelsi nie ma ID -> to nie istnieje w bazie danych
-        if (employeeTO==null) {
+
+        if (employeeTO == null) {
             throw new NullPersonException("Cannot delete non-existent employee!");
         }
-        // eTO zakł że ma ID wiec tutaj już tego nie sprawdzam w ifie że != null
         EmployeeEntity employeeEntity = EmployeeMapper.toEntity(employeeTO);
         employeeDao.deleteById(employeeEntity.getId());
     }
@@ -60,7 +60,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     @Transactional(readOnly = false)
     public EmployeeTO updateEmployee(EmployeeTO employeeTO) throws NullPersonException {
-        if (employeeTO == null) { //nie spr czy emplTO istnieje w bazie danych, jesli nie istineje to go po prostu dodam
+        if (employeeTO == null) {
             throw new NullPersonException("Cannot update employee with empty data!");
         }
         EmployeeEntity employeeEntity = EmployeeMapper.toEntity(employeeTO);
@@ -70,6 +70,12 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeTO;
     }
 
+    /**
+     * Metoda zwracająca pracownika na podstawie wpisanego identyfikatora id
+     *
+     * @param id
+     * @return
+     */
     @Override
     public EmployeeTO findEmployee(Long id) {
         Optional<EmployeeEntity> found = employeeDao.findById(id);

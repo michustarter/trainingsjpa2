@@ -13,10 +13,10 @@ public interface TrainingService {
     TrainingTO addTraining(TrainingTO trainingTO) throws NullTrainingException, TrainingAlreadyExistsException;
 
     TrainingTO assignTrainerToTraining(TrainingTO trainingTO, TrainerTO trainerTO) throws NullTrainingException,
-            NullPersonException, TrainerIsAlreadyAssignedException, TrainerCannotBeAStudentException, NullPersonException;
+            TrainerIsAlreadyAssignedException, TrainerCannotBeAStudentException, NullPersonException;
 
     TrainingTO assignStudentToTraining(TrainingTO training, StudentTO studentTO) throws NullTrainingException,
-            NullPersonException, StudentIsAlreadyAssignedException, TrainerCannotBeAStudentException, InvalidConditionsException, NullPersonException;
+            StudentIsAlreadyAssignedException, TrainerCannotBeAStudentException, InvalidConditionsException, NullPersonException;
 
     TrainingTO updateTraining(TrainingTO trainingTO) throws NullTrainingException;
 
@@ -24,7 +24,6 @@ public interface TrainingService {
 
     TrainingTO findTraining(Long trainingId) throws NullIdException;
 
-    List<TrainingTO> findTrainings();
 
     List<TrainerTO> findTrainers(TrainingTO trainingTO) throws NullTrainingException;
 
@@ -37,15 +36,15 @@ public interface TrainingService {
     int sumHoursFromTrainerTrainingsInCurrentYear(Long trainerId) throws NullTrainingException;
 
     //d
-    int countNumberOfEmployeeTrainingsInPeriod(Long studentId, Date dateFrom, Date dateTo) throws NullPersonException,
+    int countNumberOfEmployeeTrainingsInPeriod(Long studentId, Date dateFrom, Date dateTo) throws
             InvalidOrderOfDatesException, NullPersonException;
 
     //e
-    double calculateStudentCostsTrainings(Long studentId) throws NullPersonException, NullPersonException;
+    double calculateStudentCostsTrainings(Long studentId) throws NullPersonException;
 
     //for assignStudentToTraining
-    double calculateStudentCostsTrainingsInYear(Long studentId) throws NullPersonException, NullPersonException;
+    double calculateStudentCostsTrainingsInYear(Long studentId) throws NullPersonException;
 
     //for assignStudentToTraining
-    int countAllStudentTrainingsInYear(Long studentId) throws NullPersonException, NullPersonException;
+    int countAllStudentTrainingsInYear(Long studentId) throws NullPersonException;
 }

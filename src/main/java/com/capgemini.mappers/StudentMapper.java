@@ -39,32 +39,16 @@ public class StudentMapper {
             return null;
         }
 
-
-
-        StudentEntity studentEntity=  new StudentEntity();
+        StudentEntity studentEntity = new StudentEntity();
 
         studentEntity.setVersion(studentTO.getVersion());
         studentEntity.setId(studentTO.getId());
-       // studentEntity.setBoss(studentTO.getBossId().);  pamietac w testach !! bossa recznie ustawic !! i poodbnie inne przypadki z tymi id !! findById !
         studentEntity.setGrade(studentTO.getGrade());
         studentEntity.setFirstName(studentTO.getFirstName());
         studentEntity.setLastName(studentTO.getLastName());
         studentEntity.setPosition(studentTO.getPosition());
 
-        return  studentEntity;
+        return studentEntity;
     }
 
-    public static List<StudentTO> map2TOs(List<StudentEntity> studenteEntities) {
-        if (studenteEntities != null) {
-            return studenteEntities.stream().map(StudentMapper::toTO).collect(Collectors.toList());
-        }
-        return new ArrayList<>();
-    }
-
-    public static List<StudentEntity> map2Entities(List<StudentTO> studentTOS) {
-        if (studentTOS != null) {
-            return studentTOS.stream().map(StudentMapper::toEntity).collect(Collectors.toList());
-        }
-        return new ArrayList<>();
-    }
 }

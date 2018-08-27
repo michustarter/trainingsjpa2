@@ -50,7 +50,8 @@ public class EmployeeServiceTest {
 
     @Test(expected = EmployeeAlreadyExistsException.class)
     @Transactional
-    public void testShouldThrownEmployeeAlreadyExistsExceptionWhenAddDuplicateEmployee() throws NullPersonException, EmployeeAlreadyExistsException {
+    public void testShouldThrownEmployeeAlreadyExistsExceptionWhenAddDuplicateEmployee() throws NullPersonException,
+            EmployeeAlreadyExistsException {
         //given
         EmployeeTO newEmployeeTO = employeeService.addEmployee(createEmployeeTO());
         EmployeeTO duplicateEmployee = newEmployeeTO;
@@ -95,11 +96,11 @@ public class EmployeeServiceTest {
 
         //when
         employeeService.updateEmployee(updateEmployeeTO);
-        EmployeeTO afterUpdateEmployee=employeeService.findEmployee(updateEmployeeTO.getId());
+        EmployeeTO afterUpdateEmployee = employeeService.findEmployee(updateEmployeeTO.getId());
 
         // then
-        assertEquals(afterUpdateEmployee.getFirstName(),updateEmployeeTO.getFirstName());
-        assertEquals(afterUpdateEmployee.getLastName(),updateEmployeeTO.getLastName());
+        assertEquals(afterUpdateEmployee.getFirstName(), updateEmployeeTO.getFirstName());
+        assertEquals(afterUpdateEmployee.getLastName(), updateEmployeeTO.getLastName());
     }
 
     @Test(expected = OptimisticLockingFailureException.class)
@@ -115,6 +116,7 @@ public class EmployeeServiceTest {
         employeeTO.setFirstName("Dawid");
         employeeService.updateEmployee(employeeTO);
     }
+
     @Test
     @Transactional
     public void testShouldFindEmployee() throws NullPersonException, EmployeeAlreadyExistsException {
@@ -133,31 +135,11 @@ public class EmployeeServiceTest {
     public void testShouldReturnNullIfDoesNotFindEmployee() {
 
         //when
-         EmployeeTO foundEmployee = employeeService.findEmployee(2L);
+        EmployeeTO foundEmployee = employeeService.findEmployee(2L);
 
         // then
         assertThat(foundEmployee, equalTo(null));
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     private static EmployeeTO createEmployeeTO() {

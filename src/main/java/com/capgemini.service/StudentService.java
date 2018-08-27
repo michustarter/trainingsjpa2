@@ -15,5 +15,5 @@ public interface StudentService {
 
     StudentTO updateStudent(StudentTO studentTO) throws NullPersonException;
 
-    StudentTO findStudent (Long id);
+    StudentTO findStudent(Long id);
 }

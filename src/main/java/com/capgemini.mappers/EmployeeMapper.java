@@ -23,8 +23,8 @@ public class EmployeeMapper {
         if (employeeEntity.getTrainer() != null) {
             trainerId = employeeEntity.getTrainer().getId();
         }
-        if (employeeEntity.getStudent()!=null) {
-            studentId=employeeEntity.getStudent().getId();
+        if (employeeEntity.getStudent() != null) {
+            studentId = employeeEntity.getStudent().getId();
         }
         return new EmployeeTOBuilder()
                 .withVersion(employeeEntity.getVersion())
@@ -49,22 +49,8 @@ public class EmployeeMapper {
         employeeEntity.setFirstName(employeeTO.getFirstName());
         employeeEntity.setLastName(employeeTO.getLastName());
         employeeEntity.setPosition(employeeTO.getPosition());
-        // nie daje studentsId bo nie mozna dao tutaj uzywać
         return employeeEntity;
 
     }
 
-    public static List<EmployeeTO> map2TOs(List<EmployeeEntity> employeeEntities) {
-        if (employeeEntities != null) {
-            return employeeEntities.stream().map(EmployeeMapper::toTO).collect(Collectors.toList());
-        }
-        return new ArrayList<>();
-    }
-
-    public static List<EmployeeEntity> map2Entities(List<EmployeeTO> employeeTOs) {
-        if (employeeTOs != null) {
-            return employeeTOs.stream().map(EmployeeMapper::toEntity).collect(Collectors.toList());
-        }
-        return new ArrayList<>();
-    }
 }

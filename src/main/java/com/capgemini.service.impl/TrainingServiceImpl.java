@@ -28,6 +28,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * Klasa serwisowa agregująca logikę biznesową dla szkoleń
+ */
 @Service
 @Transactional
 public class TrainingServiceImpl implements TrainingService {
@@ -46,7 +49,14 @@ public class TrainingServiceImpl implements TrainingService {
 
     }
 
-
+    /**
+     * Metoda dodająca szkolenia do bazy danych.
+     *
+     * @param trainingTO
+     * @return
+     * @throws NullTrainingException          - wyjątek rzucany, gdy dochodzi do próby dodania treningu z pustymi danymi
+     * @throws TrainingAlreadyExistsException - wyjątek rzucany, gdy dodawany trening już istnieje
+     */
     @Override
     @Transactional(readOnly = false)
     public TrainingTO addTraining(TrainingTO trainingTO) throws NullTrainingException, TrainingAlreadyExistsException {
@@ -87,6 +97,17 @@ public class TrainingServiceImpl implements TrainingService {
         return trainingTO;
     }
 
+    /**
+     * Metoda dodająca trenera do treningu
+     *
+     * @param trainingTO
+     * @param trainerTO
+     * @return
+     * @throws NullTrainingException             - gdy dodawany trening jest pustym obiektem
+     * @throws TrainerIsAlreadyAssignedException - gdy dodawany trener już wcześniej został przypisany do szkolenia
+     * @throws TrainerCannotBeAStudentException  - gdy pracownik-trener jest już studentem na szkoleniu
+     * @throws NullPersonException               - gdy dodawany trener jest pustym obiektem
+     */
     @Override
     @Transactional(readOnly = false)
     public TrainingTO assignTrainerToTraining(TrainingTO trainingTO, TrainerTO trainerTO) throws NullTrainingException,
@@ -152,6 +173,19 @@ public class TrainingServiceImpl implements TrainingService {
         return trainingTO;
     }
 
+    /**
+     * Metoda dodająca studenta do szkolenia.
+     *
+     * @param trainingTO
+     * @param studentTO
+     * @return
+     * @throws NullTrainingException             - gdy dodawany trening jest pustym obiektem
+     * @throws StudentIsAlreadyAssignedException -  gdy dodawany student już wcześniej został przypisany do szkolenia
+     * @throws TrainerCannotBeAStudentException  - gdy pracownik-trener jest już studentem na szkoleniu
+     * @throws InvalidConditionsException        - gdy nie mozna dodac studenta do szkolenia, bo nie spełnia kryteriow
+     *                                           wziecia udzialu w szkoleniu (zbyt wysoki budzet/zbyt duza ilosc treningow/zbyt maly grade)
+     * @throws NullPersonException-              gdy dodawany trener jest pustym obiektem
+     */
     @Override
     @Transactional(readOnly = false)
     public TrainingTO assignStudentToTraining(TrainingTO trainingTO, StudentTO studentTO) throws
@@ -229,6 +263,13 @@ public class TrainingServiceImpl implements TrainingService {
         return trainingTO;
     }
 
+    /**
+     * Metoda uaktualniająca dane podanego szkolenia
+     *
+     * @param trainingTO
+     * @return
+     * @throws NullTrainingException - gdy przekazane do zaktualizowania szkolenie jest pustym obiektem
+     */
     @Override
     @Transactional(readOnly = false)
     public TrainingTO updateTraining(TrainingTO trainingTO)
@@ -265,6 +306,12 @@ public class TrainingServiceImpl implements TrainingService {
         return trainingTO;
     }
 
+    /**
+     * Metoda usuwajaca dane szkolenie z bazy danych
+     *
+     * @param trainingTO
+     * @throws NullTrainingException - gdy przekazane do usuniecia szkolenie jest pustym obiektem
+     */
     @Override
     @Transactional(readOnly = false)
     public void deleteTraining(TrainingTO trainingTO) throws NullTrainingException {
@@ -279,6 +326,13 @@ public class TrainingServiceImpl implements TrainingService {
         }
     }
 
+    /**
+     * Metoda wyszukuąca szkolenie po wskazanym identyfikatorze
+     *
+     * @param trainingId
+     * @return
+     * @throws NullIdException - gdy identyfikator jest pustym obiektem
+     */
     @Override
     @Transactional
     public TrainingTO findTraining(Long trainingId) throws NullIdException {
@@ -294,14 +348,13 @@ public class TrainingServiceImpl implements TrainingService {
         return null;
     }
 
-    @Override
-    @Transactional
-    public List<TrainingTO> findTrainings() {
-
-        List<TrainingTO> trainigs = TrainingMapper.map2TOs(trainingDao.findAll());
-        return trainigs;
-    }
-
+    /**
+     * Metoda zwracajaca listę trenerów bioracych udział w szkoleniu
+     *
+     * @param trainingTO
+     * @return
+     * @throws NullTrainingException - gdy szkolenie jest pustym obiektem
+     */
     @Override
     @Transactional
     public List<TrainerTO> findTrainers(TrainingTO trainingTO) throws NullTrainingException {
@@ -320,6 +373,13 @@ public class TrainingServiceImpl implements TrainingService {
         return trainers;
     }
 
+    /**
+     * Metoda zwracająca listę studentów ze szkolenia
+     *
+     * @param trainingTO
+     * @return
+     * @throws NullTrainingException - gdy szkolenie jest pustym obiektem
+     */
     @Override
     @Transactional
     public List<StudentTO> findStudents(TrainingTO trainingTO) throws NullTrainingException {
@@ -338,6 +398,13 @@ public class TrainingServiceImpl implements TrainingService {
         return students;
     }
 
+    /**
+     * Metoda wyszukująca szkolenia po przekazanym słowie kluczowym, opisującym szkolenie
+     *
+     * @param keyWord
+     * @return
+     * @throws NoKeyWordException - gdy słowo-klucz jest pustym obiektem
+     */
     //b
     @Override
     @Transactional
@@ -352,6 +419,13 @@ public class TrainingServiceImpl implements TrainingService {
         return trainingList;
     }
 
+    /**
+     * Metoda sumująca liczbę godzin wszystkich szkoleń, które poprowadził dany trener
+     *
+     * @param trainerId
+     * @return
+     * @throws NullTrainingException - gdy trener o przekazanym ID nie istnieje
+     */
     //c
     @Override
     @Transactional
@@ -367,6 +441,17 @@ public class TrainingServiceImpl implements TrainingService {
         return sum;
     }
 
+    /**
+     * Metoda zliczająca ilość szkoleń, na których był dany pracownik w danym przedziale czasowym
+     *
+     * @param studentId
+     * @param dateFrom
+     * @param dateTo
+     * @return
+     * @throws InvalidOrderOfDatesException - wyjątek rzucany, gdy data rozpoczęcia szkolenia
+     *                                      jest późniejsza data jego zakonczenia
+     * @throws NullPersonException          - gdy kursant o przekazanym identyfikatorze nie istnieje
+     */
     //d
     @Override
     @Transactional
@@ -383,6 +468,13 @@ public class TrainingServiceImpl implements TrainingService {
         return trainingDao.countAllEmployeeTrainingsInGivenTimePeriod(studentId, dateFrom, dateTo);
     }
 
+    /**
+     * Metoda zliczająca całkowity koszt szkoleń dla danego pracownika
+     *
+     * @param studentId
+     * @return
+     * @throws NullPersonException - gdy pracownik o danym identyfikatorze nie istnieje
+     */
     //e
     @Override
     @Transactional
@@ -394,26 +486,40 @@ public class TrainingServiceImpl implements TrainingService {
         return trainingDao.calculateCostOfStudentTrainings(studentId);
     }
 
+    /**
+     * Metoda zliczająca całkowity koszt szkoleń dla danego pracownika w bieżacym roku
+     *
+     * @param studentId
+     * @return
+     * @throws NullPersonException - gdy pracownik o danym identyfikatorze nie istnieje
+     */
     @Override
     @Transactional
     public double calculateStudentCostsTrainingsInYear(Long studentId) throws NullPersonException {
         if (studentId == null || !studentDao.findById(studentId).isPresent()) {
             throw new NullPersonException("Cannot count costs od trainings for non-existent student!");
         }
-        Date dateFrom = Date.valueOf("20180101");
-        Date dateTo = Date.valueOf("20181231");
+        Date dateFrom = Date.valueOf("2018-01-01");
+        Date dateTo = Date.valueOf("2018-12-31");
 
         return trainingDao.calculateCostOfStudentTrainingsInCurrentYear(studentId, dateFrom, dateTo);
     }
 
+    /**
+     * Metoda zliczająca ilość treningów w których wzial udział pracownik w biezacym roku
+     *
+     * @param studentId
+     * @return
+     * @throws NullPersonException - gdy pracownik o danym identyfikatorze nie istnieje
+     */
     @Override
     @Transactional
     public int countAllStudentTrainingsInYear(Long studentId) throws NullPersonException {
         if (studentId == null || !studentDao.findById(studentId).isPresent()) {
             throw new NullPersonException("Cannot count costs od trainings for non-existent student!");
         }
-        Date dateFrom = Date.valueOf("20180101");
-        Date dateTo = Date.valueOf("20181231");
+        Date dateFrom = Date.valueOf("2018-01-01");
+        Date dateTo = Date.valueOf("2018-12-31");
 
         return trainingDao.countAllStudentTrainingsInCurrentYear(studentId, dateFrom, dateTo);
     }

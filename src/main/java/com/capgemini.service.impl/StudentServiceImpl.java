@@ -22,6 +22,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * Klasa serwisowa agregująca logikę biznesową dla kursanta
+ */
 @Service
 @Transactional
 public class StudentServiceImpl implements StudentService {
@@ -40,13 +43,13 @@ public class StudentServiceImpl implements StudentService {
     public StudentTO addStudent(EmployeeTO employeeTO, EmployeeTO bossTO, int grade) throws NullPersonException,
             BadGradeRangeException, StudentAlreadyExistsException {
 
-        if (employeeTO == null || employeeTO.getId() == null/* || !employeeDao.findById(employeeTO.getId()).isPresent()*/) {
+        if (employeeTO == null || employeeTO.getId() == null) {
             throw new NullPersonException("Cannot create student if employee does not exist in database!");
         }
         if (employeeTO.getStudentId() != null) {
             throw new StudentAlreadyExistsException("This student already exists in database!");
         }
-        if (bossTO == null || bossTO.getId() == null /*|| !employeeDao.findById(bossTO.getId()).isPresent()*/) {
+        if (bossTO == null || bossTO.getId() == null) {
             throw new NullPersonException("Cannot create student if boss does not exist in database!");
         }
         if (grade < 1 || grade > 5) {
@@ -67,8 +70,8 @@ public class StudentServiceImpl implements StudentService {
         employeeEntity.setStudent(studentEntity);
         employeeDao.save(employeeEntity);
 
-        //to musi być !
-        employeeTO=EmployeeMapper.toTO(employeeEntity);
+        //!
+        employeeTO = EmployeeMapper.toTO(employeeEntity);
 
 
         StudentTO studentTO = StudentMapper.toTO(studentEntity);
@@ -95,7 +98,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     @Transactional(readOnly = false)
     public StudentTO updateStudent(StudentTO studentTO) throws NullPersonException {
-        if (studentTO == null) { //nie spr czy studentTO istnieje w bazie danych, jesli nie istineje to go po prostu dodam
+        if (studentTO == null) {
             throw new NullPersonException("Cannot update student with empty data!");
         }
         StudentEntity studentEntity = StudentMapper.toEntity(studentTO);
@@ -104,7 +107,7 @@ public class StudentServiceImpl implements StudentService {
         studentEntity = studentDao.save(studentEntity);
         studentTO = StudentMapper.toTO(studentEntity);
 
-        EmployeeEntity employeeEntity=employeeDao.findByStudent(studentEntity);
+        EmployeeEntity employeeEntity = employeeDao.findByStudent(studentEntity);
         employeeEntity.setStudent(studentEntity);
         employeeDao.save(employeeEntity);
 

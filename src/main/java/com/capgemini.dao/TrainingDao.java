@@ -1,6 +1,5 @@
 package com.capgemini.dao;
 
-import com.capgemini.domain.TrainerEntity;
 import com.capgemini.domain.TrainingEntity;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -12,8 +11,6 @@ import java.util.List;
 public interface TrainingDao extends CrudRepository<TrainingEntity, Long> {
 
     List<TrainingEntity> findAll();
-
-    List<TrainerEntity> findTrainersById(Long trainerId);
 
     //b
     @Query("select te from TrainingEntity te where :keyWord member of te.keyWords")

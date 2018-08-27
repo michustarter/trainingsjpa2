@@ -167,7 +167,6 @@ public class TrainingTO {
         }
 
 
-
         public TrainingTOBuilder withId(Long id) {
             this.id = id;
             return this;

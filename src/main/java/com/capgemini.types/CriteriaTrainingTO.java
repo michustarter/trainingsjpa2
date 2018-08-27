@@ -105,7 +105,7 @@ public class CriteriaTrainingTO {
             return this;
         }
 
-        public CriteriaTrainingTO buil() {
+        public CriteriaTrainingTO build() {
             return new CriteriaTrainingTO(title, type, date, amountFrom, amountTo);
         }
 

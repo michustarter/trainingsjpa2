@@ -50,8 +50,8 @@ public class StudentServiceTest {
 
     @Test(expected = NullPersonException.class)
     @Transactional
-    public void testShouldThrownNullPersonExceptionWhenEmployeeIsNull() throws NullPersonException, EmployeeAlreadyExistsException,
-            BadGradeRangeException, StudentAlreadyExistsException {
+    public void testShouldThrownNullPersonExceptionWhenEmployeeIsNull() throws NullPersonException,
+            EmployeeAlreadyExistsException, BadGradeRangeException, StudentAlreadyExistsException {
 
         //given
         EmployeeTO employeeTO = null;
@@ -65,8 +65,9 @@ public class StudentServiceTest {
 
     @Test(expected = StudentAlreadyExistsException.class)
     @Transactional
-    public void testShouldThrownStudentAlreadyExistsExceptionWhenAddDuplicateStudent() throws NullPersonException, EmployeeAlreadyExistsException,
-            BadGradeRangeException, StudentAlreadyExistsException {
+    public void testShouldThrownStudentAlreadyExistsExceptionWhenAddDuplicateStudent() throws NullPersonException,
+            EmployeeAlreadyExistsException, BadGradeRangeException, StudentAlreadyExistsException {
+
         //given
         EmployeeTO employeeTO = employeeService.addEmployee(createEmployeeTO());
         EmployeeTO bossTO = employeeService.addEmployee(createBossTO());
@@ -76,7 +77,7 @@ public class StudentServiceTest {
         employeeTO = employeeService.findEmployee(employeeTO.getId());
 
         //when
-       StudentTO duplicate =  studentService.addStudent(employeeTO, bossTO, grade);
+        StudentTO duplicate = studentService.addStudent(employeeTO, bossTO, grade);
 
     }
 
@@ -117,7 +118,8 @@ public class StudentServiceTest {
 
     @Test
     @Transactional
-    public void testShouldDeleteStudent() throws NullPersonException, EmployeeAlreadyExistsException, BadGradeRangeException, StudentAlreadyExistsException {
+    public void testShouldDeleteStudent() throws NullPersonException, EmployeeAlreadyExistsException,
+            BadGradeRangeException, StudentAlreadyExistsException {
 
         //given
         EmployeeTO employeeTO = employeeService.addEmployee(createEmployeeTO());
@@ -136,7 +138,7 @@ public class StudentServiceTest {
 
     @Test(expected = NullPersonException.class)
     @Transactional
-    public void testShouldThrownNullPersonExceptionWhenDeleteNullStudent() throws NullPersonException  {
+    public void testShouldThrownNullPersonExceptionWhenDeleteNullStudent() throws NullPersonException {
         //given
         StudentTO newStudentTO = null;
 
@@ -147,7 +149,9 @@ public class StudentServiceTest {
 
     @Test
     @Transactional
-    public void testShouldUpdateStudent() throws NullPersonException, BadGradeRangeException, StudentAlreadyExistsException, EmployeeAlreadyExistsException {
+    public void testShouldUpdateStudent() throws NullPersonException, BadGradeRangeException,
+            StudentAlreadyExistsException, EmployeeAlreadyExistsException {
+
         //given
         EmployeeTO employeeTO = employeeService.addEmployee(createEmployeeTO());
         EmployeeTO bossTO = employeeService.addEmployee(createBossTO());
@@ -158,12 +162,12 @@ public class StudentServiceTest {
         studentTO.setLastName("Jarucki");
 
         //when
-        studentTO= studentService.updateStudent(studentTO);
-        StudentTO afterUpdateStudent=studentService.findStudent(studentTO.getId());
+        studentTO = studentService.updateStudent(studentTO);
+        StudentTO afterUpdateStudent = studentService.findStudent(studentTO.getId());
 
         // then
-        assertEquals(afterUpdateStudent.getFirstName(),studentTO.getFirstName());
-       assertEquals(afterUpdateStudent.getLastName(),studentTO.getLastName());
+        assertEquals(afterUpdateStudent.getFirstName(), studentTO.getFirstName());
+        assertEquals(afterUpdateStudent.getLastName(), studentTO.getLastName());
     }
 
     @Test(expected = OptimisticLockingFailureException.class)
@@ -188,9 +192,10 @@ public class StudentServiceTest {
 
     @Test
     @Transactional
-    public void testShouldFindStudent() throws NullPersonException, EmployeeAlreadyExistsException, BadGradeRangeException, StudentAlreadyExistsException {
-        //given
+    public void testShouldFindStudent() throws NullPersonException, EmployeeAlreadyExistsException, BadGradeRangeException,
+            StudentAlreadyExistsException {
 
+        //given
         EmployeeTO employeeTO = employeeService.addEmployee(createEmployeeTO());
         EmployeeTO bossTO = employeeService.addEmployee(createBossTO());
         int grade = 3;
@@ -213,25 +218,6 @@ public class StudentServiceTest {
         // then
         assertThat(studentTO, equalTo(null));
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     private static EmployeeTO createEmployeeTO() {

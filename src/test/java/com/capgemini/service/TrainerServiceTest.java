@@ -1,14 +1,10 @@
 package com.capgemini.service;
 
-import com.capgemini.domain.EmployeeEntity;
-import com.capgemini.exceptions.EmployeeAlreadyExistsException;
 import com.capgemini.exceptions.IncorrectTrainerException;
 import com.capgemini.exceptions.NullPersonException;
 import com.capgemini.exceptions.TrainerAlreadyExistsException;
-import com.capgemini.mappers.EmployeeMapper;
 import com.capgemini.types.EmployeeTO;
 import com.capgemini.types.TrainerTO;
-import com.capgemini.types.TrainingTO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +13,7 @@ import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
@@ -68,7 +64,7 @@ public class TrainerServiceTest {
 
         //when
         trainerService.deleteTrainer(trainerTO);
-        TrainerTO foundTrainer=trainerService.findTrainer(trainerTO.getId());
+        TrainerTO foundTrainer = trainerService.findTrainer(trainerTO.getId());
 
         //then
         assertNull(foundTrainer);
@@ -83,7 +79,7 @@ public class TrainerServiceTest {
 
         //when
         trainerService.deleteTrainer(trainerTO);
-        TrainerTO foundTrainer=trainerService.findTrainer(trainerTO.getId());
+        TrainerTO foundTrainer = trainerService.findTrainer(trainerTO.getId());
 
         //then
         assertNull(foundTrainer);
@@ -100,12 +96,12 @@ public class TrainerServiceTest {
         trainerTO.setLastName("Jarucki");
 
         //when
-        trainerTO= trainerService.updateTrainer(trainerTO);
-        TrainerTO afterUpdateTrainer=trainerService.findTrainer(trainerTO.getId());
+        trainerTO = trainerService.updateTrainer(trainerTO);
+        TrainerTO afterUpdateTrainer = trainerService.findTrainer(trainerTO.getId());
 
         // then
-        assertEquals(afterUpdateTrainer.getFirstName(),trainerTO.getFirstName());
-        assertEquals(afterUpdateTrainer.getLastName(),trainerTO.getLastName());
+        assertEquals(afterUpdateTrainer.getFirstName(), trainerTO.getFirstName());
+        assertEquals(afterUpdateTrainer.getLastName(), trainerTO.getLastName());
     }
 
     @Test(expected = OptimisticLockingFailureException.class)
@@ -117,34 +113,12 @@ public class TrainerServiceTest {
 
         //when
         trainerTO.setFirstName("Tomasz");
-        trainerTO= trainerService.updateTrainer(trainerTO);
+        trainerTO = trainerService.updateTrainer(trainerTO);
 
         trainerTO.setLastName("Jarucki");
-        trainerTO= trainerService.updateTrainer(trainerTO);
+        trainerTO = trainerService.updateTrainer(trainerTO);
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     private static EmployeeTO createEmployeeTO() {
