@@ -12,7 +12,7 @@ import java.util.Objects;
 @Table(name = "STUDENT")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @EntityListeners({UpdateListener.class, InsertListener.class})
-public class StudentEntity extends AbstractEntity  implements Serializable {
+public class StudentEntity extends AbstractEntity implements Serializable {
 
 
     @Id
@@ -32,7 +32,7 @@ public class StudentEntity extends AbstractEntity  implements Serializable {
     private int grade;
 
     @OneToOne
-    @JoinColumn(name="boss_id", nullable = false)
+    @JoinColumn(name = "boss_id", nullable = false)
     private EmployeeEntity boss;
 
     public StudentEntity() {

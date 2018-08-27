@@ -48,8 +48,8 @@ public interface TrainingDao extends CrudRepository<TrainingEntity, Long> {
 
     //for assignStudentToTraining
     @Query("select count(te.id) from TrainingEntity te join te.students s on s.id = :student "
-            +  " where te.dateFrom between :dateFrom and :dateTo ")
+            + " where te.dateFrom between :dateFrom and :dateTo ")
     int countAllStudentTrainingsInCurrentYear(@Param("student") Long id,
-                                             @Param("dateFrom") Date dateFrom,
-                                             @Param("dateTo") Date dateTo);
+                                              @Param("dateFrom") Date dateFrom,
+                                              @Param("dateTo") Date dateTo);
 }

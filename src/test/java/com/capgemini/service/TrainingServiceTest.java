@@ -12,10 +12,12 @@ import com.capgemini.types.EmployeeTO;
 import com.capgemini.types.StudentTO;
 import com.capgemini.types.TrainerTO;
 import com.capgemini.types.TrainingTO;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -63,7 +65,10 @@ public class TrainingServiceTest {
 
     @Test
     @Transactional
-    public void testShouldAssignTrainerToTraining() throws BadGradeRangeException, EmployeeAlreadyExistsException, StudentAlreadyExistsException, IncorrectTrainerException, NullPersonException, TrainerAlreadyExistsException, NullTrainingException, TrainingAlreadyExistsException, TrainerIsAlreadyAssignedException, TrainerCannotBeAStudentException {
+    public void testShouldAssignTrainerToTraining() throws BadGradeRangeException, EmployeeAlreadyExistsException,
+            StudentAlreadyExistsException, IncorrectTrainerException, NullPersonException, TrainerAlreadyExistsException,
+            NullTrainingException, TrainingAlreadyExistsException, TrainerIsAlreadyAssignedException,
+            TrainerCannotBeAStudentException {
         //given
         TrainingTO trainingTO = trainingService.addTraining(createTraining());
         TrainerTO trainerTO = trainerService.addTrainer(createEmployeeTO4());
@@ -150,10 +155,127 @@ public class TrainingServiceTest {
         trainingTO = trainingService.assignStudentToTraining(trainingTO, studentTO1);
 
     }
+    @Test
+    @Transactional
+    public void testShouldUpdateTraining() throws BadGradeRangeException, EmployeeAlreadyExistsException,
+            StudentAlreadyExistsException, IncorrectTrainerException, NullPersonException, TrainerAlreadyExistsException,
+            NullTrainingException, NullIdException, TrainingAlreadyExistsException {
+
+        //given
+        TrainingTO trainingTO = trainingService.addTraining(createTraining());
+        trainingTO.setTitle("changed title");
+        trainingTO.setAmount(777);
+
+        //when
+        trainingTO=trainingService.updateTraining(trainingTO);
+        TrainingTO afterUpdateTraining = trainingService.findTraining(trainingTO.getId());
+
+        // then
+        assertEquals(afterUpdateTraining.getTitle(),trainingTO.getTitle());
+        assertTrue(afterUpdateTraining.getAmount()==trainingTO.getAmount());
+
+    }
+
+    @Test(expected = OptimisticLockingFailureException.class)
+    public void testShouldThrownOptimisticLockingException() throws BadGradeRangeException, EmployeeAlreadyExistsException,
+            StudentAlreadyExistsException, IncorrectTrainerException, NullPersonException, TrainerAlreadyExistsException,
+            NullTrainingException, TrainingAlreadyExistsException {
+
+        //given
+        TrainingTO trainingTO = trainingService.addTraining(createTraining());
+
+        //when
+        trainingTO.setTitle("Title1");
+        trainingService.updateTraining(trainingTO);
+
+        trainingTO.setTitle("Title2");
+        trainingService.updateTraining(trainingTO);
+
+    }
+
+    @Test
+    @Transactional
+    public void testShouldDeleteTraining() throws NullTrainingException, NullIdException, BadGradeRangeException,
+            EmployeeAlreadyExistsException, StudentAlreadyExistsException, IncorrectTrainerException, NullPersonException,
+            TrainerAlreadyExistsException, TrainingAlreadyExistsException {
+
+        //given
+        TrainingTO trainingTO = trainingService.addTraining(createTraining());
+
+        //when
+        trainingService.deleteTraining(trainingTO);
+       TrainingTO foundTraining=trainingService.findTraining(trainingTO.getId());
+
+        //then
+        assertNull(foundTraining);
+    }
+
+    @Test
+    @Transactional
+    public void testShouldFindTrainersFromTraining() throws NullTrainingException, BadGradeRangeException,
+            EmployeeAlreadyExistsException, StudentAlreadyExistsException, IncorrectTrainerException, NullPersonException,
+            TrainerAlreadyExistsException, TrainingAlreadyExistsException {
+
+        //given
+        TrainingTO trainingTO = trainingService.addTraining(createTraining());
+
+        //when
+        List<TrainerTO> trainers = trainingService.findTrainers(trainingTO);
+
+        //then
+        assertTrue(!trainers.isEmpty());
+    }
+
+    @Test
+    @Transactional
+    public void testShouldFindStudentsFromTraining() throws NullTrainingException, BadGradeRangeException,
+            EmployeeAlreadyExistsException, StudentAlreadyExistsException, IncorrectTrainerException, NullPersonException,
+            TrainerAlreadyExistsException, TrainingAlreadyExistsException {
+
+        //given
+        TrainingTO trainingTO = trainingService.addTraining(createTraining());
+
+        //when
+        List<StudentTO> students = trainingService.findStudents(trainingTO);
+
+        //then
+        assertTrue(!students.isEmpty());
+    }
+    @Test
+    @Transactional
+    public void testShouldFindTrainingByKeyWord() throws NullTrainingException, BadGradeRangeException,
+            EmployeeAlreadyExistsException, StudentAlreadyExistsException, IncorrectTrainerException, NullPersonException,
+            TrainerAlreadyExistsException, TrainingAlreadyExistsException, NoKeyWordException {
+
+        //given
+        TrainingTO trainingTO = trainingService.addTraining(createTraining());
+
+        //when
+        List<TrainingTO> trainings = trainingService.searchTrainingsByKeyWord("excel");
+
+        //then
+        assertTrue(!trainings.isEmpty());
+        assertTrue(trainings.get(0).equals(trainingTO));
+    }
+
+    @Test
+    @Transactional
+    public void testShouldSumNumberOfHoursTrainingsForTrainer() throws NullTrainingException, BadGradeRangeException,
+            EmployeeAlreadyExistsException, StudentAlreadyExistsException, IncorrectTrainerException, NullPersonException,
+            TrainerAlreadyExistsException, TrainingAlreadyExistsException {
+
+        //given
+        TrainingTO trainingTO = trainingService.addTraining(createTraining());
+
+       Long trainerId= trainingTO.getTrainersId().get(0);
 
 
+        //when
+        int sum = trainingService.sumHoursFromTrainerTrainingsInCurrentYear(trainerId);
 
-
+        //then
+        assertTrue(sum==trainingTO.getNumberOfHours());
+    }
 
 
 
@@ -200,6 +322,47 @@ public class TrainingServiceTest {
         return trainingTO;
     }
 
+    private TrainingTO createTraining2() throws NullPersonException, EmployeeAlreadyExistsException,
+            BadGradeRangeException, StudentAlreadyExistsException, TrainerAlreadyExistsException, IncorrectTrainerException {
+
+        List<String> keyWords = new ArrayList<>();
+        keyWords.add("budzetowanie");
+        keyWords.add("excel");
+        keyWords.add("kwerendy");
+
+        List<Long> studentsId = new ArrayList<>();
+
+        EmployeeTO employeeTO1 = employeeService.addEmployee(createEmployeeTO1());
+        EmployeeTO bossTO1 = employeeService.addEmployee(createBossTO1());
+
+        EmployeeTO employeeTO2 = employeeService.addEmployee(createEmployeeTO2());
+        EmployeeTO bossTO2 = employeeService.addEmployee(createBossTO2());
+
+        StudentTO studentTO1 = studentService.addStudent(employeeTO1, bossTO1, 3);
+        StudentTO studentTO2 = studentService.addStudent(employeeTO2, bossTO2, 4);
+
+        studentsId.add(studentTO1.getId());
+        studentsId.add(studentTO2.getId());
+
+        List<Long> trainersId = new ArrayList<>();
+
+        TrainerTO trainerTO1 = trainerService.addTrainer(createEmployeeTO3());
+        //TrainerTO trainerTO2=trainerService.addTrainer(createEmployeeTO4());
+
+        TrainerTO trainerTO3 = trainerService.addExternalTrainer(createExternalTrainerTO1());
+        //TrainerTO trainerTO4=trainerService.addExternalTrainer(createExternalTrainerTO2());
+
+        trainersId.add(trainerTO1.getId());
+        // trainersId.add(trainerTO2.getId());
+        trainersId.add(trainerTO3.getId());
+        // trainersId.add(trainerTO4.getId());
+
+        TrainingTO trainingTO2 = new TrainingTO("training2", "internal2", "technical2",
+                Date.valueOf("2018-04-04"), Date.valueOf("2018-06-06"),
+                150, 500, keyWords, studentsId, trainersId);
+
+        return trainingTO2;
+    }
 
     private static EmployeeTO createEmployeeTO1() {
         return new EmployeeTO.EmployeeTOBuilder()

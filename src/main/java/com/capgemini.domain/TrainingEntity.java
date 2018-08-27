@@ -13,7 +13,7 @@ import java.util.Objects;
 @Table(name = "TRAINING")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @EntityListeners({UpdateListener.class, InsertListener.class})
-public class TrainingEntity extends AbstractEntity{
+public class TrainingEntity extends AbstractEntity {
 
 
     @Id
@@ -100,7 +100,7 @@ public class TrainingEntity extends AbstractEntity{
         this.dateFrom = dateFrom;
     }
 
-    public String  getDateTo() {
+    public String getDateTo() {
         return dateTo.toString();
     }
 

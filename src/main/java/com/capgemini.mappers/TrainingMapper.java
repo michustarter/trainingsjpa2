@@ -57,8 +57,6 @@ public class TrainingMapper {
         trainingEntity.setNumberOfHours(trainingTO.getNumberOfHours());
         trainingEntity.setKeyWords(trainingTO.getKeyWords());
         trainingEntity.setAmount(trainingTO.getAmount());
-        //nie daje  setStudents bo nie moge tu przekonwertowac z IDków na obiekty Entity
-        //ani setTrainers^^
 
         return trainingEntity;
 
@@ -70,12 +68,4 @@ public class TrainingMapper {
         }
         return new ArrayList<>();
     }
-
-    public static List<TrainingEntity> map2Entities(List<TrainingTO> trainingTOs) {
-        if (trainingTOs != null) {
-            return trainingTOs.stream().map(TrainingMapper::toEntity).collect(Collectors.toList());
-        }
-        return new ArrayList<>();
-    }
-
 }
