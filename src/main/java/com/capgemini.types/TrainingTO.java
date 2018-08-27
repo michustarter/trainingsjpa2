@@ -37,6 +37,19 @@ public class TrainingTO {
         this.version = version;
     }
 
+    public TrainingTO(String title, String type, String kind, Date dateFrom, Date dateTo, int numberOfHours, double amount, List<String> keyWords, List<Long> studentsId, List<Long> trainersId) {
+        this.title = title;
+        this.type = type;
+        this.kind = kind;
+        this.dateFrom = dateFrom;
+        this.dateTo = dateTo;
+        this.numberOfHours = numberOfHours;
+        this.amount = amount;
+        this.keyWords = keyWords;
+        this.studentsId = studentsId;
+        this.trainersId = trainersId;
+    }
+
     public Long getId() {
         return id;
     }
@@ -152,6 +165,8 @@ public class TrainingTO {
         public TrainingTOBuilder() {
             super();
         }
+
+
 
         public TrainingTOBuilder withId(Long id) {
             this.id = id;

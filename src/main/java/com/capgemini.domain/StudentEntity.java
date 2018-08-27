@@ -6,6 +6,7 @@ import com.capgemini.listeners.UpdateListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(name = "STUDENT")
@@ -91,5 +92,23 @@ public class StudentEntity extends AbstractEntity  implements Serializable {
 
     public void setBoss(EmployeeEntity boss) {
         this.boss = boss;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        StudentEntity that = (StudentEntity) o;
+        return grade == that.grade &&
+                Objects.equals(id, that.id) &&
+                Objects.equals(firstName, that.firstName) &&
+                Objects.equals(lastName, that.lastName) &&
+                Objects.equals(position, that.position) &&
+                Objects.equals(boss, that.boss);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, position, grade, boss);
     }
 }

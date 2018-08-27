@@ -5,6 +5,7 @@ import com.capgemini.listeners.UpdateListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(name = "EMPLOYEE")
@@ -26,11 +27,11 @@ public class EmployeeEntity extends AbstractEntity implements Serializable {
     private String position;
 
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(name = "student_id")
     private StudentEntity student;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(name = "trainer_id")
     private TrainerEntity trainer;
 
@@ -93,5 +94,23 @@ public class EmployeeEntity extends AbstractEntity implements Serializable {
 
     public void setTrainer(TrainerEntity trainer) {
         this.trainer = trainer;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        EmployeeEntity that = (EmployeeEntity) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(firstName, that.firstName) &&
+                Objects.equals(lastName, that.lastName) &&
+                Objects.equals(position, that.position) &&
+                Objects.equals(student, that.student) &&
+                Objects.equals(trainer, that.trainer);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, position, student, trainer);
     }
 }

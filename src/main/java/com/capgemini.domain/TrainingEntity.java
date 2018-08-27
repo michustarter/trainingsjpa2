@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "TRAINING")
@@ -153,5 +154,28 @@ public class TrainingEntity extends AbstractEntity{
 
     public void setTrainers(List<TrainerEntity> trainers) {
         this.trainers = trainers;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TrainingEntity that = (TrainingEntity) o;
+        return numberOfHours == that.numberOfHours &&
+                Double.compare(that.amount, amount) == 0 &&
+                Objects.equals(id, that.id) &&
+                Objects.equals(title, that.title) &&
+                Objects.equals(type, that.type) &&
+                Objects.equals(kind, that.kind) &&
+                Objects.equals(dateFrom, that.dateFrom) &&
+                Objects.equals(dateTo, that.dateTo) &&
+                Objects.equals(keyWords, that.keyWords) &&
+                Objects.equals(students, that.students) &&
+                Objects.equals(trainers, that.trainers);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, type, kind, dateFrom, dateTo, numberOfHours, keyWords, amount, students, trainers);
     }
 }
