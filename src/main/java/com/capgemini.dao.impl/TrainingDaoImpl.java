@@ -3,6 +3,7 @@ package com.capgemini.dao.impl;
 import com.capgemini.dao.TrainingQueryDao;
 import com.capgemini.domain.TrainingEntity;
 import com.capgemini.types.CriteriaTrainingTO;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Date;
 
@@ -10,6 +11,7 @@ import java.sql.Date;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
+@Repository
 public class TrainingDaoImpl extends AbstractDao<TrainingEntity, Long> implements TrainingQueryDao {
 
     @Override

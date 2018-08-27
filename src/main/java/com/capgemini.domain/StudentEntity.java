@@ -14,10 +14,6 @@ import java.io.Serializable;
 public class StudentEntity extends AbstractEntity  implements Serializable {
 
 
-    @Version
-    @Column(name="version", columnDefinition = "integer DEFAULT 0", nullable = false)
-    private int version;
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

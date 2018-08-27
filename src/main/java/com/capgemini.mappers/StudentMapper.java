@@ -14,10 +14,18 @@ public class StudentMapper {
             return null;
         }
 
+        ///
+        Long bossId = null;
+
+        if (studentEntity.getBoss() != null) {
+            bossId = studentEntity.getBoss().getId();
+        }
+
+        ///
         return new StudentTO.StudentTOBuilder()
                 .withVersion(studentEntity.getVersion())
                 .withId(studentEntity.getId())
-                .withBossId(studentEntity.getBoss().getId())
+                .withBossId(bossId)
                 .withGrade(studentEntity.getGrade())
                 .withFirstName(studentEntity.getFirstName())
                 .withLastName(studentEntity.getLastName())
@@ -34,11 +42,11 @@ public class StudentMapper {
         StudentEntity studentEntity=  new StudentEntity();
 
         studentEntity.setVersion(studentTO.getVersion());
-        studentEntity.setId(studentEntity.getId());
+        studentEntity.setId(studentTO.getId());
         //studentEntity.setBoss(studentTO.getBossId().);  pamietac w testach !! bossa recznie ustawic !! i poodbnie inne przypadki z tymi id !! findById !
-        studentEntity.setGrade(studentEntity.getGrade());
-        studentEntity.setFirstName(studentEntity.getFirstName());
-        studentEntity.setLastName(studentEntity.getLastName());
+        studentEntity.setGrade(studentTO.getGrade());
+        studentEntity.setFirstName(studentTO.getFirstName());
+        studentEntity.setLastName(studentTO.getLastName());
         studentEntity.setPosition(studentTO.getPosition());
 
         return  studentEntity;

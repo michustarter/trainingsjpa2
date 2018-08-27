@@ -1,5 +1,7 @@
 package com.capgemini.types;
 
+import java.util.Objects;
+
 public class TrainerTO {
 
     private int version;
@@ -127,5 +129,23 @@ public class TrainerTO {
 
         }
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TrainerTO trainerTO = (TrainerTO) o;
+        return version == trainerTO.version &&
+                Objects.equals(id, trainerTO.id) &&
+                Objects.equals(firstName, trainerTO.firstName) &&
+                Objects.equals(lastName, trainerTO.lastName) &&
+                Objects.equals(position, trainerTO.position) &&
+                Objects.equals(companyName, trainerTO.companyName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(version, id, firstName, lastName, position, companyName);
     }
 }

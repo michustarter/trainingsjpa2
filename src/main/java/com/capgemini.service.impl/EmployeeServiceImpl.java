@@ -6,43 +6,47 @@ import com.capgemini.domain.EmployeeEntity;
 import com.capgemini.mappers.EmployeeMapper;
 import com.capgemini.service.EmployeeService;
 import com.capgemini.types.EmployeeTO;
-import com.capgemini.util.EmployeeAlreadyExistsException;
-import com.capgemini.util.NullPersonException;
+import com.capgemini.exceptions.EmployeeAlreadyExistsException;
+import com.capgemini.exceptions.NullPersonException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
+
 
 @Service
+@Transactional
 public class EmployeeServiceImpl implements EmployeeService {
 
     private EmployeeDao employeeDao;
 
     @Autowired
     public EmployeeServiceImpl(EmployeeDao employeeDao) {
-        this.employeeDao=employeeDao;
+        this.employeeDao = employeeDao;
     }
 
-
     @Override
-    @Transactional
+    @Transactional(readOnly = false)
     public EmployeeTO addEmployee(EmployeeTO employeeTO) throws NullPersonException, EmployeeAlreadyExistsException {
 
-        if(employeeTO == null) {
+        if (employeeTO == null) {
             throw new NullPersonException("Cannot add employee to database with empty data!");
         }
         //isPresent dodane zamiast != null
-        if(employeeTO.getId()!=null || employeeDao.findById(employeeTO.getId()).isPresent()) {
+        if (employeeTO.getId() != null /*|| employeeDao.findById(employeeTO.getId()).isPresent()*/) {
             throw new EmployeeAlreadyExistsException("This employee already exists in database!");
         }
         EmployeeEntity employeeEntity = EmployeeMapper.toEntity(employeeTO);
-        employeeEntity=employeeDao.save(employeeEntity);
-        employeeTO=EmployeeMapper.toTO(employeeEntity);
+        employeeEntity = employeeDao.save(employeeEntity);
+        employeeTO = EmployeeMapper.toTO(employeeEntity);
 
         return employeeTO;
     }
 
     @Override
+    @Transactional(readOnly = false)
     public void deleteEmployee(EmployeeTO employeeTO) throws NullPersonException {
         // zakładam, że eTO ma ID, jelsi nie ma ID -> to nie istnieje w bazie danych
         if (employeeTO.getId() == null || !employeeDao.findById(employeeTO.getId()).isPresent()) {
@@ -54,8 +58,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    @Transactional(readOnly = false)
     public EmployeeTO updateEmployee(EmployeeTO employeeTO) throws NullPersonException {
-        if (employeeTO == null ) { //nie spr czy emplTO istnieje w bazie danych, jesli nie istineje to go po prostu dodam
+        if (employeeTO == null) { //nie spr czy emplTO istnieje w bazie danych, jesli nie istineje to go po prostu dodam
             throw new NullPersonException("Cannot update employee with empty data!");
         }
         EmployeeEntity employeeEntity = EmployeeMapper.toEntity(employeeTO);
@@ -63,5 +68,15 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeTO = EmployeeMapper.toTO(employeeEntity);
 
         return employeeTO;
+    }
+
+    @Override
+    public EmployeeTO findEmployee(Long id) {
+        Optional<EmployeeEntity> found = employeeDao.findById(id);
+        boolean check = found.isPresent();
+        if (check) {
+            return EmployeeMapper.toTO(found.get());
+        }
+        return null;
     }
 }

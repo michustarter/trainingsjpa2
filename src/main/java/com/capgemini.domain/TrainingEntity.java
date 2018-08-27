@@ -14,9 +14,6 @@ import java.util.List;
 @EntityListeners({UpdateListener.class, InsertListener.class})
 public class TrainingEntity extends AbstractEntity{
 
-    @Version
-    @Column(name="version", columnDefinition = "integer DEFAULT 0", nullable = false)
-    private int version;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

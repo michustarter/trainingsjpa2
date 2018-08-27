@@ -1,10 +1,9 @@
 package com.capgemini.service;
 
-import com.capgemini.mappers.TrainingMapper;
 import com.capgemini.types.*;
-import com.capgemini.util.IncorrectTrainerException;
-import com.capgemini.util.NullPersonException;
-import com.capgemini.util.TrainerAlreadyExistsException;
+import com.capgemini.exceptions.IncorrectTrainerException;
+import com.capgemini.exceptions.NullPersonException;
+import com.capgemini.exceptions.TrainerAlreadyExistsException;
 
 public interface TrainerService {
 

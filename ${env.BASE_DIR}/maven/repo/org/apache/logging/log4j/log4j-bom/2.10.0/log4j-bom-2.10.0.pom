@@ -108,13 +108,13 @@
         <artifactId>log4j-iostreams</artifactId>
         <version>${project.version}</version>
       </dependency>
-      <!-- java.util.logging adapter -->
+      <!-- java.exceptions.logging adapter -->
       <dependency>
         <groupId>org.apache.logging.log4j</groupId>
         <artifactId>log4j-jul</artifactId>
         <version>${project.version}</version>
       </dependency>
-      <!-- java.util.logging adapter -->
+      <!-- java.exceptions.logging adapter -->
       <dependency>
         <groupId>org.apache.logging.log4j</groupId>
         <artifactId>log4j-liquibase</artifactId>

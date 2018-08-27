@@ -1,4 +1,4 @@
-package com.capgemini.util;
+package com.capgemini.exceptions;
 
 public class EmployeeAlreadyExistsException extends Exception{
 

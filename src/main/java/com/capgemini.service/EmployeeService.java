@@ -1,8 +1,8 @@
 package com.capgemini.service;
 
 import com.capgemini.types.EmployeeTO;
-import com.capgemini.util.EmployeeAlreadyExistsException;
-import com.capgemini.util.NullPersonException;
+import com.capgemini.exceptions.EmployeeAlreadyExistsException;
+import com.capgemini.exceptions.NullPersonException;
 
 public interface EmployeeService {
 
@@ -11,6 +11,8 @@ public interface EmployeeService {
     void deleteEmployee(EmployeeTO employeeTO) throws NullPersonException;
 
     EmployeeTO updateEmployee(EmployeeTO employeeTO) throws NullPersonException;
+
+    EmployeeTO findEmployee(Long id);
 }
 
 

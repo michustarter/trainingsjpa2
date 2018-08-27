@@ -17,14 +17,23 @@ public class EmployeeMapper {
             return null;
         }
 
+        Long trainerId = null;
+        Long studentId = null;
+
+        if (employeeEntity.getTrainer() != null) {
+            trainerId = employeeEntity.getTrainer().getId();
+        }
+        if (employeeEntity.getStudent()!=null) {
+            studentId=employeeEntity.getStudent().getId();
+        }
         return new EmployeeTOBuilder()
                 .withVersion(employeeEntity.getVersion())
                 .withId(employeeEntity.getId())
                 .withFirstName(employeeEntity.getFirstName())
                 .withLastName(employeeEntity.getLastName())
                 .withPosition(employeeEntity.getPosition())
-                .withTrainerId(employeeEntity.getTrainer().getId())
-                .withStudentId(employeeEntity.getStudent().getId())
+                .withTrainerId(trainerId)
+                .withStudentId(studentId)
                 .build();
 
     }
@@ -40,7 +49,7 @@ public class EmployeeMapper {
         employeeEntity.setFirstName(employeeTO.getFirstName());
         employeeEntity.setLastName(employeeTO.getLastName());
         employeeEntity.setPosition(employeeTO.getPosition());
-    // nie daje studentsId bo nie mozna dao tutaj uzywać
+        // nie daje studentsId bo nie mozna dao tutaj uzywać
         return employeeEntity;
 
     }

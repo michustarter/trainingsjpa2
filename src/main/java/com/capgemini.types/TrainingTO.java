@@ -234,4 +234,27 @@ public class TrainingTO {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TrainingTO that = (TrainingTO) o;
+        return version == that.version &&
+                numberOfHours == that.numberOfHours &&
+                Double.compare(that.amount, amount) == 0 &&
+                Objects.equals(id, that.id) &&
+                Objects.equals(title, that.title) &&
+                Objects.equals(type, that.type) &&
+                Objects.equals(kind, that.kind) &&
+                Objects.equals(dateFrom, that.dateFrom) &&
+                Objects.equals(dateTo, that.dateTo) &&
+                Objects.equals(keyWords, that.keyWords) &&
+                Objects.equals(studentsId, that.studentsId) &&
+                Objects.equals(trainersId, that.trainersId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(version, id, title, type, kind, dateFrom, dateTo, numberOfHours, amount, keyWords, studentsId, trainersId);
+    }
 }
